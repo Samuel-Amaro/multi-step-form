@@ -1,30 +1,40 @@
 import Button from "./Button";
 import FormWrapper from "./FormWrapper";
 import Sidebar from "./Sidebar";
+import StepPlan from "./StepPlan";
 import StepPersonalInfo from "./StepPersonalInfo";
+import StepAddOns from "./StepAddOns";
 
 export default function Form() {
  
-    /*const steps = [
-   <FormWrapper
-     title="Personal info"
-     description="Please provide your name, email address, and phone number."
-   >
-     <StepOne />
-   </FormWrapper>,
- ];
- */
+    const steps = [
+      <FormWrapper
+        title="Personal info"
+        description="Please provide your name, email address, and phone number."
+      >
+        <StepPersonalInfo />
+      </FormWrapper>,
+      <FormWrapper
+        title="Select your plan"
+        description="You have the option of monthly or yearly billing."
+      >
+        <StepPlan />
+      </FormWrapper>,
+      <FormWrapper
+        title="Pick add-ons"
+        description="Add-ons help enhance your gaming experience."
+      >
+        <StepAddOns />
+      </FormWrapper>,
+    ];
 
   return (
     <form className="Form" aria-label="Form to register and orders">
       <Sidebar />
       <section className="form__Content">
-        <FormWrapper
-          title="Personal info"
-          description="Please provide your name, email address, and phone number."
-        >
-          <StepPersonalInfo />
-        </FormWrapper>
+       {
+        steps[2]
+       }
       </section>
       <div className="form__Buttons">
         <Button
