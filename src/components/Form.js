@@ -1,60 +1,97 @@
-import Button from "./Button";
-import FormWrapper from "./FormWrapper";
 import Sidebar from "./Sidebar";
 import StepPlan from "./StepPlan";
 import StepPersonalInfo from "./StepPersonalInfo";
 import StepAddOns from "./StepAddOns";
+import { useState } from "react";
 
 export default function Form() {
- 
-    const steps = [
-      <FormWrapper
-        title="Personal info"
-        description="Please provide your name, email address, and phone number."
-      >
-        <StepPersonalInfo />
-      </FormWrapper>,
-      <FormWrapper
-        title="Select your plan"
-        description="You have the option of monthly or yearly billing."
-      >
-        <StepPlan />
-      </FormWrapper>,
-      <FormWrapper
-        title="Pick add-ons"
-        description="Add-ons help enhance your gaming experience."
-      >
-        <StepAddOns />
-      </FormWrapper>,
-    ];
+  //datas defaults
+  const [datas, setDatas] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    plan: {
+      name: "arcade",
+      price: 9,
+      timePlan: "monthly",
+    },
+    addOns: [
+      { name: "online service", price: 1 },
+      { name: "Larger storage", price: 2 },
+    ],
+  });
+  const steps = [
+    <StepPersonalInfo datas={datas} setDatas={setDatas} />,
+    <StepPlan datas={datas} setDatas={setDatas} />,
+    <StepAddOns datas={datas} />,
+  ];
+  const [currentStepIndex, setCurrentStepIndex] = useState(0);
+
+  function nextStep() {
+    setCurrentStepIndex((i) => {
+      if (currentStepIndex < steps.length - 1) {
+        return i + 1;
+      }
+      return i;
+    });
+  }
+
+  function backStep() {
+    setCurrentStepIndex((i) => {
+      if (currentStepIndex > 0) {
+        return i - 1;
+      }
+      return i;
+    });
+  }
+
+  function handleSubmitForm(event) {
+    event.preventDefault();
+    nextStep();
+  }
 
   return (
-    <form className="Form" aria-label="Form to register and orders">
+    <form
+      className="Form"
+      aria-label="Form to register and orders"
+      onSubmit={handleSubmitForm}
+    >
       <Sidebar />
-      <section className="form__Content">
-       {
-        steps[2]
-       }
-      </section>
+      <section className="form__Content">{steps[currentStepIndex]}</section>
       <div className="form__Buttons">
-        <Button
-          type="button"
-          class="form__Btn-Previous"
-          label="Button Go Back Step from Form"
-          text="Go Back"
-        />
-        <Button
-          type="button"
-          class="form__Btn-Next"
-          label="Button Next Step from Form"
-          text=" Next Step"
-        />
-        <Button
+        {currentStepIndex !== 0 && (
+          <button
+            type="button"
+            className="form__Btn form__btn--Previous"
+            aria-label="Button Go Back Step from Form"
+            title="Button Go Back Step from Form"
+            onPointerDown={(event) => {
+              backStep();
+            }}
+          >
+            Go Back
+          </button>
+        )}
+        <button
           type="submit"
-          class="form__Btn-Confirm"
-          label="Button Confirm Submit from Form"
-          text="Confirm"
-        />
+          className={
+            currentStepIndex !== steps.length - 1
+              ? "form__Btn form__btn--Next"
+              : "form__Btn form__btn--Confirm"
+          }
+          aria-label={
+            currentStepIndex !== steps.length - 1
+              ? "Button Next Step from Form"
+              : "Button Confirm Submit from Form"
+          }
+          title={
+            currentStepIndex !== steps.length - 1
+              ? "Button Next Step from Form"
+              : "Button Confirm Submit from Form"
+          }
+        >
+          {currentStepIndex !== steps.length - 1 ? "Next Step" : "Confirm"}
+        </button>
       </div>
     </form>
   );

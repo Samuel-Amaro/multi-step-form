@@ -1,3 +1,4 @@
+import { useState } from "react";
 
 export default function CardAddons(props) {
   const nameAttributerHTML = props.name.toLowerCase().split(" ").join("-");
@@ -5,6 +6,7 @@ export default function CardAddons(props) {
     props.planSelectedTime.toLowerCase() === "monthly" ? "mo" : "yr";
   const calcPrice =
     strFormatTimePlan === "mo" ? props.price : parseInt(props.price) * 10;
+    const [isChecked, setIsChecked] = useState(props.checked);
   return (
     <div className="form__Card-Addons">
       <input
@@ -14,6 +16,12 @@ export default function CardAddons(props) {
         name={nameAttributerHTML}
         value={props.name.toLowerCase()}
         aria-labelledby={`description-${nameAttributerHTML}`}
+        checked={isChecked}
+        onChange={(event) => {
+          setIsChecked((prevState) => {
+            return !prevState;
+          });
+        }}
       />
       <p className="form__Container-Description-Addons">
         <label className="form__Label" htmlFor={nameAttributerHTML}>

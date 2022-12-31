@@ -1,8 +1,47 @@
 export default function CardPlan(props) {
-  const strFormatTimePlan = props.planSelectedTime.toLowerCase() === "monthly" ? "mo" : "yr";
-  const calcPrice = strFormatTimePlan === "mo" ? props.price : parseInt(props.price) * 10;
+  const strFormatTimePlan =
+    props.planSelectedTime.toLowerCase() === "monthly" ? "mo" : "yr";
+  const calcPrice =
+    strFormatTimePlan === "mo" ? props.price : parseInt(props.price) * 10;
   return (
-    <div className="Card-Plan">
+    <div
+      className={
+        props.isSelected ? "Card-Plan card-plan--selected" : "Card-Plan"
+      }
+      onPointerDown={(event) => {
+        props.setPlanSelected({ name: props.namePlan, price: calcPrice });
+        props.setDatas((d) => {
+          return {
+            ...d,
+            ...{
+              plan: {
+                name: props.namePlan,
+                price: calcPrice,
+                timePlan: d.plan.timePlan,
+              },
+            },
+          };
+        });
+      }}
+      onKeyDown={(event) => {
+        if (event.key === "Enter") {
+          props.setPlanSelected({ name: props.namePlan, price: calcPrice });
+          props.setDatas((d) => {
+            return {
+              ...d,
+              ...{
+                plan: {
+                  name: props.namePlan,
+                  price: calcPrice,
+                  timePlan: d.plan.timePlan,
+                },
+              },
+            };
+          });
+        }
+      }}
+      tabIndex="0"
+    >
       <img
         aria-hidden="true"
         alt=""

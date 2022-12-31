@@ -3,38 +3,54 @@ import iconArcade from "../assets/images/icon-arcade.svg";
 import iconAdvanced from "../assets/images/icon-advanced.svg";
 import iconPro from "../assets/images/icon-pro.svg";
 import { useState } from "react";
+import FormWrapper from "./FormWrapper";
 
-export default function StepPlan() {
-  const [planSelected, setPlanSelected] = useState("monthly");
-  const datasPlan = [
+export default function StepPlan(props) {
+  const planCurrent = props.datas.plan;
+  const [planTimeSelected, setPlanTimeSelected] = useState(
+    planCurrent.timePlan.toLowerCase()
+  );
+  const [planSelected, setPlanSelected] = useState(planCurrent);
+  const datasPlanStart = [
     {
       img: iconArcade,
       name: "Arcade",
-      price: "9",
+      price: 9,
     },
     {
       img: iconAdvanced,
       name: "Advanced",
-      price: "12",
+      price: 12,
     },
     {
       img: iconPro,
       name: "Pro",
-      price: "15",
+      price: 15,
     },
   ];
 
   return (
-    <>
+    <FormWrapper
+      title="Select your plan"
+      description="You have the option of monthly or yearly billing."
+    >
       <div className="form__Container-Plans">
-        {datasPlan.map((plan, index) => {
+        {datasPlanStart.map((plan, index) => {
           return (
             <CardPlan
               src={plan.img}
               namePlan={plan.name}
               price={plan.price}
-              planSelectedTime={planSelected}
+              planSelectedTime={planTimeSelected}
               key={index}
+              isSelected={
+                planCurrent.name.toLowerCase() === plan.name.toLowerCase() &&
+                planCurrent.price === plan.price
+                  ? true
+                  : false
+              }
+              setPlanSelected={setPlanSelected}
+              setDatas={props.setDatas}
             />
           );
         })}
@@ -53,8 +69,21 @@ export default function StepPlan() {
             title="Option Plan monthly"
             required
             onChange={(event) => {
-              setPlanSelected(event.target.value);
+              setPlanTimeSelected(event.target.value);
+              props.setDatas((d) => {
+                return {
+                  ...d,
+                  ...{
+                    plan: {
+                      name: d.plan.name,
+                      price: d.plan.price,
+                      timePlan: event.target.value,
+                    },
+                  },
+                };
+              });
             }}
+            checked={planTimeSelected === "monthly" ? true : false}
           />
           <input
             type="radio"
@@ -65,8 +94,21 @@ export default function StepPlan() {
             title="Option Plan Yearly"
             required
             onChange={(event) => {
-              setPlanSelected(event.target.value);
+              setPlanTimeSelected(event.target.value);
+              props.setDatas((d) => {
+                return {
+                  ...d,
+                  ...{
+                    plan: {
+                      name: d.plan.name,
+                      price: d.plan.price,
+                      timePlan: event.target.value,
+                    },
+                  },
+                };
+              });
             }}
+            checked={planTimeSelected === "yearly" ? true : false}
           />
           <span
             className="form__Control-Switch"
@@ -78,6 +120,6 @@ export default function StepPlan() {
           Yearly
         </label>
       </fieldset>
-    </>
+    </FormWrapper>
   );
 }
