@@ -15,6 +15,7 @@ export default function Form() {
       price: 9,
       timePlan: "monthly",
     },
+    factorMultiplyPricePlanYear: 10,
     addOns: [
       { name: "online service", price: 1 },
       { name: "Larger storage", price: 2 },
@@ -23,7 +24,7 @@ export default function Form() {
   const steps = [
     <StepPersonalInfo datas={datas} setDatas={setDatas} />,
     <StepPlan datas={datas} setDatas={setDatas} />,
-    <StepAddOns datas={datas} />,
+    <StepAddOns datas={datas} setDatas={setDatas} />,
   ];
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
 
@@ -47,6 +48,7 @@ export default function Form() {
 
   function handleSubmitForm(event) {
     event.preventDefault();
+    console.log(datas);
     nextStep();
   }
 

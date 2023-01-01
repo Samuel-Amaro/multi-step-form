@@ -101,7 +101,7 @@ export default function StepPlan(props) {
                   ...{
                     plan: {
                       name: d.plan.name,
-                      price: d.plan.price,
+                      price: d.plan.price * d.factorMultiplyPricePlanYear,
                       timePlan: event.target.value,
                     },
                   },
