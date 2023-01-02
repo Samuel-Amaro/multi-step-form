@@ -104,6 +104,15 @@ export default function StepPlan(props) {
                       price: d.plan.price * d.factorMultiplyPricePlanYear,
                       timePlan: event.target.value,
                     },
+                    //se tiver addOns no storage state top
+                    /*...{
+                      addOns: d.addOns.length > 0 ? d.addOns.map((a) => {
+                        return {
+                          name: a.name,
+                          price: a.price * d.factorMultiplyPricePlanYear,
+                        };
+                      }) : []
+                    }*/
                   },
                 };
               });

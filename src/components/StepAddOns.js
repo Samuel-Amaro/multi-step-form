@@ -3,8 +3,6 @@ import CardAddons from "./CardAddons";
 import FormWrapper from "./FormWrapper";
 
 export default function StepAddOns(props) {
-  //TODO: LOGICA CORRETA DO STEP ADD ONLS, MAS A LOGICA PARA TER CONTROLE DOS ADD ONLS MARCADOS OU DESMARCADOS ESTA ERRADA.
-  //TODO: CORRIGIR
   const dataAddons = [
     {
       name: "Online service",
@@ -25,22 +23,15 @@ export default function StepAddOns(props) {
       /*checkedDefault: false,*/
     },
   ];
-  const addOnsDefaultsCheckeds = props.datas.addOns;
   const [addonsSelecteds, setAddonsSelecteds] = useState(
     props.datas.addOns
   );
 
   function isCheckedAddOns(addOns) {
-    let isChecked = null;
-    addOnsDefaultsCheckeds.forEach((element) => {
-      if (
-        element.name.toLowerCase() === addOns.name.toLowerCase() &&
-        element.price === addOns.price
-      ) {
-        isChecked = true;
-      }
+    return props.datas.addOns.some((element) => {
+      return addOns.name.toLowerCase() === element.name.toLowerCase(); /*&&
+        element.price === addOns.price*/
     });
-    return isChecked;
   }
 
   return (
@@ -49,6 +40,7 @@ export default function StepAddOns(props) {
       description="Add-ons help enhance your gaming experience."
     >
       {dataAddons.map((addOns, index) => {
+        console.log(isCheckedAddOns(addOns))
         return (
           <CardAddons
             name={addOns.name}
@@ -56,7 +48,7 @@ export default function StepAddOns(props) {
             price={addOns.price}
             planSelectedTime={props.datas.plan.timePlan}
             key={index}
-            isChecked={isCheckedAddOns(addOns) ? true : false}
+            isCheckedP={isCheckedAddOns(addOns) ? true : false}
             setDatas={props.setDatas}
             setAddonsSelecteds={setAddonsSelecteds}
             addonsSelecteds={addonsSelecteds}
