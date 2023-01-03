@@ -3,28 +3,16 @@ import StepPlan from "./StepPlan";
 import StepPersonalInfo from "./StepPersonalInfo";
 import StepAddOns from "./StepAddOns";
 import { useState } from "react";
+import useData from "../functions/useData";
 
 export default function Form() {
   //datas defaults
-  const [datas, setDatas] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    plan: {
-      name: "arcade",
-      price: 9,
-      timePlan: "monthly",
-    },
-    factorMultiplyPricePlanYear: 10,
-    addOns: [
-      { name: "online service", price: 1 },
-      { name: "Larger storage", price: 2 },
-    ],
-  });
+  const {datas, setDatas, dataAddons, datasPlanStart} = useData();
+
   const steps = [
     <StepPersonalInfo datas={datas} setDatas={setDatas} />,
-    <StepPlan datas={datas} setDatas={setDatas} />,
-    <StepAddOns datas={datas} setDatas={setDatas} />,
+    <StepPlan datas={datas} setDatas={setDatas} datasPlanStart={datasPlanStart}/>,
+    <StepAddOns datas={datas} setDatas={setDatas} dataAddons={dataAddons} />,
   ];
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
 

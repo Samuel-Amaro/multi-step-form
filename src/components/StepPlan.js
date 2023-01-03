@@ -1,7 +1,4 @@
 import CardPlan from "./CardPlan";
-import iconArcade from "../assets/images/icon-arcade.svg";
-import iconAdvanced from "../assets/images/icon-advanced.svg";
-import iconPro from "../assets/images/icon-pro.svg";
 import { useState } from "react";
 import FormWrapper from "./FormWrapper";
 
@@ -11,23 +8,6 @@ export default function StepPlan(props) {
     planCurrent.timePlan.toLowerCase()
   );
   const [planSelected, setPlanSelected] = useState(planCurrent);
-  const datasPlanStart = [
-    {
-      img: iconArcade,
-      name: "Arcade",
-      price: 9,
-    },
-    {
-      img: iconAdvanced,
-      name: "Advanced",
-      price: 12,
-    },
-    {
-      img: iconPro,
-      name: "Pro",
-      price: 15,
-    },
-  ];
 
   return (
     <FormWrapper
@@ -35,7 +15,7 @@ export default function StepPlan(props) {
       description="You have the option of monthly or yearly billing."
     >
       <div className="form__Container-Plans">
-        {datasPlanStart.map((plan, index) => {
+        {props.datasPlanStart.map((plan, index) => {
           return (
             <CardPlan
               src={plan.img}

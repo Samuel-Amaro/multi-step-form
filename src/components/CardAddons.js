@@ -15,10 +15,7 @@ export default function CardAddons({
     planSelectedTime.toLowerCase() === "monthly" ? "mo" : "yr";
   const calcPrice =
     strFormatTimePlan === "mo" ? price : parseInt(price) * 10;
-    console.log(isCheckedP);
   const [isChecked, setIsChecked] = useState(isCheckedP);
-
-  //TODO: SE JA TIVER ADD ONS SELECIONADOS POR DEFAULT VERIFICAR SE OS PRICES ESTÃO CORRETOS, DE ACORDO COM O TIME PLAN
 
   useEffect(() => {
     setDatas((d) => {
