@@ -8,6 +8,11 @@ import StepSummary from "./StepSummary";
 import TankYou from "./TankYou";
 
 export default function Form() {
+
+  //TODO: APLICAR VALIDAÇÃO DOS CAMPOS DO FORMULARIO
+  //TODO: REFATORAR ALGUNS FUNCTIONS PARA TIRAR COMPLEXIDADE
+  //TODO: VARIAS PARTES DO CODE USANDO MESMA FUNCTION REFACTOR, ENCAPSULAR FUNCTION SET DATAS EM UMA UPDATE FIELDS GLOBAL
+
   //datas defaults
   const {datas, setDatas, dataAddons, datasPlanStart} = useData();
   const [isFinish, setIsFinish] = useState(false);
@@ -60,12 +65,9 @@ export default function Form() {
       {isFinish ? (
         <TankYou />
       ) : (
-        <section className="form__Content">{steps[currentStepIndex]}</section>
-      )}
-      {isFinish ? (
-        ""
-      ) : (
-        <div className="form__Buttons">
+        <>
+          <section className="form__Content">{steps[currentStepIndex]}</section>
+          <div className="form__Buttons">
           {currentStepIndex !== 0 && (
             <button
               type="button"
@@ -100,6 +102,7 @@ export default function Form() {
             {currentStepIndex !== steps.length - 1 ? "Next Step" : "Confirm"}
           </button>
         </div>
+        </>
       )}
     </form>
   );

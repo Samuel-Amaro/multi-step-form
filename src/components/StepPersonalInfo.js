@@ -22,6 +22,8 @@ export default function StepPersonalInfo(props) {
             });
           }}
           required
+          min="3"
+          title="Please enter with name"
         />
       </p>
       <p className="form__Group">
@@ -40,6 +42,7 @@ export default function StepPersonalInfo(props) {
             });
           }}
           required
+          title="Please enter with email addres with format e.g. stephenking@lorem.com"
         />
       </p>
       <p className="form__Group">
@@ -47,7 +50,7 @@ export default function StepPersonalInfo(props) {
           Phone Number
         </label>
         <input
-          type="number"
+          type="tel"
           className="form__Input"
           id="phone"
           placeholder="e.g. +1 234 567 890"
@@ -58,6 +61,8 @@ export default function StepPersonalInfo(props) {
             });
           }}
           required
+          pattern="[0-9]{1}[\s]{1}[0-9]{3}[\s]{1}[0-9][\s]{1}[0-9]{3}"
+          title="Please enter with number phone with format e.g. +1 234 567 890"
         />
       </p>
     </FormWrapper>
