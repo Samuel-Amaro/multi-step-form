@@ -10,8 +10,7 @@ export default function StepAddOns(props) {
 
   function isCheckedAddOns(addOns) {
     return props.datas.addOns.some((element) => {
-      return addOns.name.toLowerCase() === element.name.toLowerCase(); /*&&
-        element.price === addOns.price*/
+      return addOns.name.toLowerCase() === element.name.toLowerCase();
     });
   }
 
@@ -29,7 +28,6 @@ export default function StepAddOns(props) {
             planSelectedTime={props.datas.plan.timePlan}
             key={index}
             isCheckedP={isCheckedAddOns(addOns) ? true : false}
-            /*setDatas={props.setDatas}*/
             updateFields={props.updateFields}
             setAddonsSelecteds={setAddonsSelecteds}
             addonsSelecteds={addonsSelecteds}

@@ -20,13 +20,12 @@ export default function Form() {
     <StepPersonalInfo datas={datas} updateFields={updateFields} />,
     <StepPlan
       datas={datas}
-      /*setDatas={setDatas}*/
       updateFields={updateFields}
       datasPlanStart={datasPlanStart}
     />,
     <StepAddOns
       datas={datas}
-      /*setDatas={setDatas}*/ updateFields={updateFields}
+      updateFields={updateFields}
       dataAddons={dataAddons}
     />,
     <StepSummary datas={datas} goTo={goTo} />,

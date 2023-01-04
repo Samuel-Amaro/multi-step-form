@@ -15,8 +15,6 @@ export default function CardPlan(props) {
         props.isSelected ? "Card-Plan card-plan--selected" : "Card-Plan"
       }
       onPointerDown={(event) => {
-        /*props.setPlanSelected({ name: props.namePlan, price: calcPrice });
-         */
         props.updateFields({
           plan: {
             name: props.namePlan,
@@ -28,23 +26,9 @@ export default function CardPlan(props) {
             timePlan: props.planTimeSelected,
           },
         });
-        /*props.setDatas((d) => {
-          return {
-            ...d,
-            ...{
-              plan: {
-                name: props.namePlan,
-                price: calcPrice,
-                timePlan: d.plan.timePlan,
-              },
-            },
-          };
-        });
-        */
       }}
       onKeyDown={(event) => {
         if (event.key === "Enter") {
-          /*props.setPlanSelected({ name: props.namePlan, price: calcPrice });*/
           props.updateFields({
             plan: {
               name: props.namePlan,
@@ -56,19 +40,6 @@ export default function CardPlan(props) {
               timePlan: props.planTimeSelected,
             },
           });
-          /*props.setDatas((d) => {
-            return {
-              ...d,
-              ...{
-                plan: {
-                  name: props.namePlan,
-                  price: calcPrice,
-                  timePlan: d.plan.timePlan,
-                },
-              },
-            };
-          });
-          */
         }
       }}
       tabIndex="0"

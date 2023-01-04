@@ -7,7 +7,6 @@ export default function StepPlan(props) {
   const [planTimeSelected, setPlanTimeSelected] = useState(
     planInitial.timePlan.toLowerCase()
   );
-  /*const [planSelected, setPlanSelected] = useState(planInitial);*/
 
   return (
     <FormWrapper
@@ -30,8 +29,6 @@ export default function StepPlan(props) {
                   ? true
                   : false
               }
-              /*setPlanSelected={setPlanSelected}*/
-              /*setDatas={props.setDatas}*/
               updateFields={props.updateFields}
             />
           );
@@ -59,19 +56,6 @@ export default function StepPlan(props) {
                   timePlan: event.target.value,
                 },
               });
-              /*props.setDatas((d) => {
-                return {
-                  ...d,
-                  ...{
-                    plan: {
-                      name: d.plan.name,
-                      price: d.plan.price,
-                      timePlan: event.target.value,
-                    },
-                  },
-                };
-              });
-              */
             }}
             checked={planTimeSelected === "monthly" ? true : false}
           />
@@ -92,19 +76,6 @@ export default function StepPlan(props) {
                   timePlan: event.target.value,
                 },
               });
-              /*props.setDatas((d) => {
-                return {
-                  ...d,
-                  ...{
-                    plan: {
-                      name: d.plan.name,
-                      price: d.plan.price * d.factorMultiplyPricePlanYear,
-                      timePlan: event.target.value,
-                    },
-                  },
-                };
-              });
-            }}*/
             }}
             checked={planTimeSelected === "yearly" ? true : false}
           />
