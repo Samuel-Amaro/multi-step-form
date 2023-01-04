@@ -1,6 +1,7 @@
 import FormWrapper from "./FormWrapper";
 
 export default function StepPersonalInfo(props) {
+  const initialValues = {name: props.datas.name, email: props.datas.email, phone: props.datas.phone};
   return (
     <FormWrapper
       title="Personal info"
@@ -15,11 +16,9 @@ export default function StepPersonalInfo(props) {
           className="form__Input"
           id="name"
           placeholder="e.g. Stephen King"
-          value={props.datas.name}
+          value={initialValues.name}
           onChange={(event) => {
-            props.setDatas((d) => {
-              return { ...d, ...{ name: event.target.value } };
-            });
+            props.updateFields({ name: event.target.value });
           }}
           required
           min="3"
@@ -35,11 +34,9 @@ export default function StepPersonalInfo(props) {
           className="form__Input"
           id="email"
           placeholder="e.g. stephenking@lorem.com"
-          value={props.datas.email}
+          value={initialValues.email}
           onChange={(event) => {
-            props.setDatas((e) => {
-              return { ...e, ...{ email: event.target.value } };
-            });
+            props.updateFields({ email: event.target.value });
           }}
           required
           title="Please enter with email addres with format e.g. stephenking@lorem.com"
@@ -54,14 +51,13 @@ export default function StepPersonalInfo(props) {
           className="form__Input"
           id="phone"
           placeholder="e.g. +1 234 567 890"
-          value={props.datas.phone}
+          value={initialValues.phone}
           onChange={(event) => {
-            props.setDatas((p) => {
-              return { ...p, ...{ phone: event.target.value } };
-            });
+            props.updateFields({ phone: event.target.value });
           }}
           required
-          pattern="[0-9]{1}[\s]{1}[0-9]{3}[\s]{1}[0-9][\s]{1}[0-9]{3}"
+          min="13"
+          pattern="[0-9]{1}[\s]{1}[0-9]{3}[\s]{1}[0-9]{3}[\s]{1}[0-9]{3}"
           title="Please enter with number phone with format e.g. +1 234 567 890"
         />
       </p>

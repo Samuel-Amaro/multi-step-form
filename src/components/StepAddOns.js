@@ -29,7 +29,8 @@ export default function StepAddOns(props) {
             planSelectedTime={props.datas.plan.timePlan}
             key={index}
             isCheckedP={isCheckedAddOns(addOns) ? true : false}
-            setDatas={props.setDatas}
+            /*setDatas={props.setDatas}*/
+            updateFields={props.updateFields}
             setAddonsSelecteds={setAddonsSelecteds}
             addonsSelecteds={addonsSelecteds}
           />

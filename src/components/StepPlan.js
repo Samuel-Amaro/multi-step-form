@@ -3,11 +3,11 @@ import { useState } from "react";
 import FormWrapper from "./FormWrapper";
 
 export default function StepPlan(props) {
-  const planCurrent = props.datas.plan;
+  const planInitial = props.datas.plan;
   const [planTimeSelected, setPlanTimeSelected] = useState(
-    planCurrent.timePlan.toLowerCase()
+    planInitial.timePlan.toLowerCase()
   );
-  const [planSelected, setPlanSelected] = useState(planCurrent);
+  /*const [planSelected, setPlanSelected] = useState(planInitial);*/
 
   return (
     <FormWrapper
@@ -21,16 +21,18 @@ export default function StepPlan(props) {
               src={plan.img}
               namePlan={plan.name}
               price={plan.price}
-              planSelectedTime={planTimeSelected}
+              planTimeSelected={planTimeSelected}
+              factorMultiply={props.datas.factorMultiplyPricePlanYear}
               key={index}
               isSelected={
-                planCurrent.name.toLowerCase() === plan.name.toLowerCase() &&
-                planCurrent.price === plan.price
+                planInitial.name.toLowerCase() === plan.name.toLowerCase() &&
+                planInitial.price === plan.price
                   ? true
                   : false
               }
-              setPlanSelected={setPlanSelected}
-              setDatas={props.setDatas}
+              /*setPlanSelected={setPlanSelected}*/
+              /*setDatas={props.setDatas}*/
+              updateFields={props.updateFields}
             />
           );
         })}
@@ -50,7 +52,14 @@ export default function StepPlan(props) {
             required
             onChange={(event) => {
               setPlanTimeSelected(event.target.value);
-              props.setDatas((d) => {
+              props.updateFields({
+                plan: {
+                  name: planInitial.name,
+                  price: planInitial.price,
+                  timePlan: event.target.value,
+                },
+              });
+              /*props.setDatas((d) => {
                 return {
                   ...d,
                   ...{
@@ -62,6 +71,7 @@ export default function StepPlan(props) {
                   },
                 };
               });
+              */
             }}
             checked={planTimeSelected === "monthly" ? true : false}
           />
@@ -75,7 +85,14 @@ export default function StepPlan(props) {
             required
             onChange={(event) => {
               setPlanTimeSelected(event.target.value);
-              props.setDatas((d) => {
+              props.updateFields({
+                plan: {
+                  name: planInitial.name,
+                  price: planInitial.price,
+                  timePlan: event.target.value,
+                },
+              });
+              /*props.setDatas((d) => {
                 return {
                   ...d,
                   ...{
@@ -84,18 +101,10 @@ export default function StepPlan(props) {
                       price: d.plan.price * d.factorMultiplyPricePlanYear,
                       timePlan: event.target.value,
                     },
-                    //se tiver addOns no storage state top
-                    /*...{
-                      addOns: d.addOns.length > 0 ? d.addOns.map((a) => {
-                        return {
-                          name: a.name,
-                          price: a.price * d.factorMultiplyPricePlanYear,
-                        };
-                      }) : []
-                    }*/
                   },
                 };
               });
+            }}*/
             }}
             checked={planTimeSelected === "yearly" ? true : false}
           />

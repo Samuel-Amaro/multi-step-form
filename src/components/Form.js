@@ -8,26 +8,29 @@ import StepSummary from "./StepSummary";
 import TankYou from "./TankYou";
 
 export default function Form() {
-
   //TODO: APLICAR VALIDAÇÃO DOS CAMPOS DO FORMULARIO
   //TODO: REFATORAR ALGUNS FUNCTIONS PARA TIRAR COMPLEXIDADE
   //TODO: VARIAS PARTES DO CODE USANDO MESMA FUNCTION REFACTOR, ENCAPSULAR FUNCTION SET DATAS EM UMA UPDATE FIELDS GLOBAL
 
-  //datas defaults
-  const {datas, setDatas, dataAddons, datasPlanStart} = useData();
+  const { datas, setDatas, dataAddons, datasPlanStart } = useData();
   const [isFinish, setIsFinish] = useState(false);
+  const [currentStepIndex, setCurrentStepIndex] = useState(0);
 
   const steps = [
-    <StepPersonalInfo datas={datas} setDatas={setDatas} />,
+    <StepPersonalInfo datas={datas} updateFields={updateFields} />,
     <StepPlan
       datas={datas}
-      setDatas={setDatas}
+      /*setDatas={setDatas}*/
+      updateFields={updateFields}
       datasPlanStart={datasPlanStart}
     />,
-    <StepAddOns datas={datas} setDatas={setDatas} dataAddons={dataAddons} />,
-    <StepSummary datas={datas} />,
+    <StepAddOns
+      datas={datas}
+      /*setDatas={setDatas}*/ updateFields={updateFields}
+      dataAddons={dataAddons}
+    />,
+    <StepSummary datas={datas} goTo={goTo} />,
   ];
-  const [currentStepIndex, setCurrentStepIndex] = useState(0);
 
   function nextStep() {
     setCurrentStepIndex((i) => {
@@ -47,9 +50,19 @@ export default function Form() {
     });
   }
 
+  function goTo(index) {
+    setCurrentStepIndex(index);
+  }
+
+  function updateFields(fields) {
+    setDatas(d => {
+      return {...d, ...fields};
+    });
+  }
+
   function handleSubmitForm(event) {
     event.preventDefault();
-    if(currentStepIndex !== steps.length - 1) {
+    if (currentStepIndex !== steps.length - 1) {
       return nextStep();
     }
     setIsFinish(true);
@@ -68,40 +81,40 @@ export default function Form() {
         <>
           <section className="form__Content">{steps[currentStepIndex]}</section>
           <div className="form__Buttons">
-          {currentStepIndex !== 0 && (
+            {currentStepIndex !== 0 && (
+              <button
+                type="button"
+                className="form__Btn form__btn--Previous"
+                aria-label="Button Go Back Step from Form"
+                title="Button Go Back Step from Form"
+                onPointerDown={(event) => {
+                  backStep();
+                }}
+              >
+                Go Back
+              </button>
+            )}
             <button
-              type="button"
-              className="form__Btn form__btn--Previous"
-              aria-label="Button Go Back Step from Form"
-              title="Button Go Back Step from Form"
-              onPointerDown={(event) => {
-                backStep();
-              }}
+              type="submit"
+              className={
+                currentStepIndex !== steps.length - 1
+                  ? "form__Btn form__btn--Next"
+                  : "form__Btn form__btn--Confirm"
+              }
+              aria-label={
+                currentStepIndex !== steps.length - 1
+                  ? "Button Next Step from Form"
+                  : "Button Confirm Submit from Form"
+              }
+              title={
+                currentStepIndex !== steps.length - 1
+                  ? "Button Next Step from Form"
+                  : "Button Confirm Submit from Form"
+              }
             >
-              Go Back
+              {currentStepIndex !== steps.length - 1 ? "Next Step" : "Confirm"}
             </button>
-          )}
-          <button
-            type="submit"
-            className={
-              currentStepIndex !== steps.length - 1
-                ? "form__Btn form__btn--Next"
-                : "form__Btn form__btn--Confirm"
-            }
-            aria-label={
-              currentStepIndex !== steps.length - 1
-                ? "Button Next Step from Form"
-                : "Button Confirm Submit from Form"
-            }
-            title={
-              currentStepIndex !== steps.length - 1
-                ? "Button Next Step from Form"
-                : "Button Confirm Submit from Form"
-            }
-          >
-            {currentStepIndex !== steps.length - 1 ? "Next Step" : "Confirm"}
-          </button>
-        </div>
+          </div>
         </>
       )}
     </form>

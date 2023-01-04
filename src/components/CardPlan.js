@@ -1,16 +1,34 @@
+
+function calcPrice(timePlan, price, factorMultiply) {
+  if(timePlan.toLowerCase() === "monthly") {
+    return price;
+  }
+  return price * factorMultiply;
+}
+
 export default function CardPlan(props) {
   const strFormatTimePlan =
-    props.planSelectedTime.toLowerCase() === "monthly" ? "mo" : "yr";
-  const calcPrice =
-    strFormatTimePlan === "mo" ? props.price : parseInt(props.price) * 10;
+    props.planTimeSelected.toLowerCase() === "monthly" ? "mo" : "yr";
   return (
     <div
       className={
         props.isSelected ? "Card-Plan card-plan--selected" : "Card-Plan"
       }
       onPointerDown={(event) => {
-        props.setPlanSelected({ name: props.namePlan, price: calcPrice });
-        props.setDatas((d) => {
+        /*props.setPlanSelected({ name: props.namePlan, price: calcPrice });
+         */
+        props.updateFields({
+          plan: {
+            name: props.namePlan,
+            price: calcPrice(
+              props.planTimeSelected,
+              props.price,
+              props.factorMultiply
+            ),
+            timePlan: props.planTimeSelected,
+          },
+        });
+        /*props.setDatas((d) => {
           return {
             ...d,
             ...{
@@ -22,11 +40,23 @@ export default function CardPlan(props) {
             },
           };
         });
+        */
       }}
       onKeyDown={(event) => {
         if (event.key === "Enter") {
-          props.setPlanSelected({ name: props.namePlan, price: calcPrice });
-          props.setDatas((d) => {
+          /*props.setPlanSelected({ name: props.namePlan, price: calcPrice });*/
+          props.updateFields({
+            plan: {
+              name: props.namePlan,
+              price: calcPrice(
+                props.planTimeSelected,
+                props.price,
+                props.factorMultiply
+              ),
+              timePlan: props.planTimeSelected,
+            },
+          });
+          /*props.setDatas((d) => {
             return {
               ...d,
               ...{
@@ -38,6 +68,7 @@ export default function CardPlan(props) {
               },
             };
           });
+          */
         }
       }}
       tabIndex="0"
@@ -50,7 +81,11 @@ export default function CardPlan(props) {
       />
       <div>
         <h5 className="card-plan__Name-Plan">{props.namePlan}</h5>
-        <p className="card-plan__price">{`$${calcPrice}/${strFormatTimePlan}`}</p>
+        <p className="card-plan__price">{`$${calcPrice(
+          props.planTimeSelected,
+          props.price,
+          props.factorMultiply
+        )}/${strFormatTimePlan}`}</p>
         {strFormatTimePlan === "yr" && (
           <p className="card-plan__Alert-Prom">2 months free</p>
         )}

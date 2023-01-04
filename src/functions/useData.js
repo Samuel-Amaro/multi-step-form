@@ -5,9 +5,7 @@ import iconPro from "../assets/images/icon-pro.svg";
 
 export default function useData() {
 
-  //TODO: REFACTOR CODE PARA MENOS COMPLEXO, DIVIDIR EM FUNCTIONS
-
-  const [datas, setDatas] = useState({
+  const initialValues = {
     name: "",
     email: "",
     phone: "",
@@ -21,7 +19,9 @@ export default function useData() {
       { name: "online service", price: 1 },
       { name: "Larger storage", price: 2 },
     ],
-  });
+  };
+
+  const [datas, setDatas] = useState(initialValues);
 
   const datasPlanStart = [
     {

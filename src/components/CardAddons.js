@@ -6,7 +6,8 @@ export default function CardAddons({
   price,
   planSelectedTime,
   isCheckedP,
-  setDatas,
+  /*setDatas,*/
+  updateFields,
   setAddonsSelecteds,
   addonsSelecteds,
 }) {
@@ -17,8 +18,9 @@ export default function CardAddons({
     strFormatTimePlan === "mo" ? price : parseInt(price) * 10;
   const [isChecked, setIsChecked] = useState(isCheckedP);
 
+  //apos atualizar state local, atualiza o state do form
   useEffect(() => {
-    setDatas((d) => {
+    /*setDatas((d) => {
       return {
         ...d,
         ...{
@@ -26,7 +28,38 @@ export default function CardAddons({
         },
       };
     });
+    */
+    updateFields({ addOns: [...addonsSelecteds] });
   }, [addonsSelecteds]);
+
+  //apos marcar/desmacar checkbox, atualiza state local
+  useEffect(() => {
+    //marcado - checked true
+    if (isChecked) {
+      setAddonsSelecteds((a) => {
+        //se o addOns não estiver no state
+        if (!isAddInState({ name: name, price: calcPrice })) {
+          return [
+            ...a,
+            {
+              name: name,
+              price: calcPrice,
+            },
+          ];
+        }
+        return a;
+      });
+    } else {
+      //desmarcado
+      if (isAddInState({ name: name, price: calcPrice })) {
+        const removedAddons = removeAddonsDeselected({
+          name: name,
+          price: calcPrice,
+        });
+        setAddonsSelecteds([...removedAddons]);
+      }
+    }
+  }, [isChecked]);
 
   function removeAddonsDeselected(addOns) {
     const filteredAddons = addonsSelecteds.filter((ao) => {
@@ -54,10 +87,11 @@ export default function CardAddons({
         aria-labelledby={`description-${nameAttributerHTML}`}
         checked={isChecked}
         onChange={(event) => {
-          const currentState = !isChecked;
-          setIsChecked(currentState);
+          //const currentState = !isChecked;
+          //setIsChecked(currentState);
+          setIsChecked(!isChecked);
           //marcado - checked true
-          if (currentState) {
+          /*if (currentState) {
             setAddonsSelecteds((a) => {
               //se o addOns não estiver no state
               if (!isAddInState({ name: name, price: calcPrice })) {
@@ -80,7 +114,7 @@ export default function CardAddons({
               });
               setAddonsSelecteds([...removedAddons]);
             }
-          }
+          }*/
         }}
       />
       <p className="form__Container-Description-Addons">

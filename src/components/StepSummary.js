@@ -29,6 +29,14 @@ export default function StepSummary(props) {
                 className="form__btn form__Btn--Change"
                 aria-label="Change Plan"
                 title="Change Plan"
+                onPointerDown={(event) => {
+                  props.goTo(1);
+                }}
+                onKeyDown={(event) => {
+                  if(event.key === "Enter") {
+                    props.goTo(1);
+                  }
+                }}
               >
                 Change
               </button>
