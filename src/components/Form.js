@@ -8,16 +8,23 @@ import StepSummary from "./StepSummary";
 import TankYou from "./TankYou";
 
 export default function Form() {
-  //TODO: APLICAR VALIDAÇÃO DOS CAMPOS DO FORMULARIO
-  //TODO: REFATORAR ALGUNS FUNCTIONS PARA TIRAR COMPLEXIDADE
-  //TODO: VARIAS PARTES DO CODE USANDO MESMA FUNCTION REFACTOR, ENCAPSULAR FUNCTION SET DATAS EM UMA UPDATE FIELDS GLOBAL
+  //TODO: ENCONTRAR FORMA DE COMO DESTACAR O SIDE BAR INDICATOR STEP DE ACORDO COM O STEP, DE FORMA DINAMICA
 
   const { datas, setDatas, dataAddons, datasPlanStart } = useData();
   const [isFinish, setIsFinish] = useState(false);
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
+  const [formErros, setFormErros] = useState({});
+  const emailRegexExp =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  const phoneRegexpExp =
+    /[0-9]{1}[\s]{1}[0-9]{3}[\s]{1}[0-9]{3}[\s]{1}[0-9]{3}/;
 
   const steps = [
-    <StepPersonalInfo datas={datas} updateFields={updateFields} />,
+    <StepPersonalInfo
+      datas={datas}
+      updateFields={updateFields}
+      formErros={formErros}
+    />,
     <StepPlan
       datas={datas}
       updateFields={updateFields}
@@ -54,16 +61,51 @@ export default function Form() {
   }
 
   function updateFields(fields) {
-    setDatas(d => {
-      return {...d, ...fields};
+    setDatas((d) => {
+      return { ...d, ...fields };
     });
+  }
+
+  function validate(valuesFields) {
+    const erros = {};
+    if (!valuesFields.name.trim()) {
+      erros.name = "This field is required";
+    }
+    if (!valuesFields.email.trim()) {
+      erros.email = "This field is required";
+    } else if (!emailRegexExp.test(valuesFields.email)) {
+      erros.email = "This not valid email format!";
+    }
+    if (!valuesFields.phone.trim()) {
+      erros.phone = "This field is required";
+    }else if(!phoneRegexpExp.test(valuesFields.phone)) {
+      erros.phone = "This not valid number phone format!";
+    }
+    return erros;
   }
 
   function handleSubmitForm(event) {
     event.preventDefault();
+    if (currentStepIndex === 0) {
+      const v = validate({
+        name: datas.name,
+        email: datas.email,
+        phone: datas.phone,
+      });
+      setFormErros(v);
+      //campos validados
+      if (Object.keys(v).length === 0) {
+        return nextStep();
+      } else {
+        //campos invalidos, impede de proseguir
+        return;
+      }
+    }
+    //enquanto não estiver no ultimo passo, pode proseguir
     if (currentStepIndex !== steps.length - 1) {
       return nextStep();
     }
+    //finaliza form
     setIsFinish(true);
   }
 

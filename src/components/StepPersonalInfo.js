@@ -7,10 +7,21 @@ export default function StepPersonalInfo(props) {
       title="Personal info"
       description="Please provide your name, email address, and phone number."
     >
-      <p className="form__Group">
-        <label htmlFor="name" className="form__Label">
-          Name
-        </label>
+      <div className="form__Group">
+        {props.formErros.name ? (
+          <p className="form__Wrapper-Labels">
+            <label htmlFor="name" className="form__Label">
+              Name
+            </label>
+            <span className="form__Error" aria-live="polite">
+              {props.formErros.name}
+            </span>
+          </p>
+        ) : (
+          <label htmlFor="name" className="form__Label">
+            Name
+          </label>
+        )}
         <input
           type="text"
           className="form__Input"
@@ -24,11 +35,22 @@ export default function StepPersonalInfo(props) {
           min="3"
           title="Please enter with name"
         />
-      </p>
-      <p className="form__Group">
-        <label htmlFor="email" className="form__Label">
-          Email Address
-        </label>
+      </div>
+      <div className="form__Group">
+        {props.formErros.email ? (
+          <p className="form__Wrapper-Labels">
+            <label htmlFor="email" className="form__Label">
+              Email Address
+            </label>
+            <span className="form__Error" aria-live="polite">
+              {props.formErros.email}
+            </span>
+          </p>
+        ) : (
+          <label htmlFor="email" className="form__Label">
+            Email Address
+          </label>
+        )}
         <input
           type="email"
           className="form__Input"
@@ -41,11 +63,22 @@ export default function StepPersonalInfo(props) {
           required
           title="Please enter with email addres with format e.g. stephenking@lorem.com"
         />
-      </p>
-      <p className="form__Group">
-        <label htmlFor="phone" className="form__Label">
-          Phone Number
-        </label>
+      </div>
+      <div className="form__Group">
+        {props.formErros.phone ? (
+          <p className="form__Wrapper-Labels">
+            <label htmlFor="phone" className="form__Label">
+              Phone Number
+            </label>
+            <span className="form__Error" aria-live="polite">
+              {props.formErros.phone}
+            </span>
+          </p>
+        ) : (
+          <label htmlFor="phone" className="form__Label">
+            Phone Number
+          </label>
+        )}
         <input
           type="tel"
           className="form__Input"
@@ -60,7 +93,7 @@ export default function StepPersonalInfo(props) {
           pattern="[0-9]{1}[\s]{1}[0-9]{3}[\s]{1}[0-9]{3}[\s]{1}[0-9]{3}"
           title="Please enter with number phone with format e.g. +1 234 567 890"
         />
-      </p>
+      </div>
     </FormWrapper>
   );
 }
