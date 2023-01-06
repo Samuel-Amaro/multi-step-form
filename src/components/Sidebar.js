@@ -11,7 +11,15 @@ export default function Sidebar(props) {
     <aside className="Sidebar">
      {
         data.map((dataStep, index) => {
-            return <StepIndicator number={dataStep.numberStep} info={dataStep.info} summary={dataStep.summary} key={index}/>
+            return (
+              <StepIndicator
+                number={dataStep.numberStep}
+                info={dataStep.info}
+                summary={dataStep.summary}
+                key={index}
+                isSelected={props.currentStepIndex === index ? true : false}
+              />
+            );
         })
      }
     </aside>

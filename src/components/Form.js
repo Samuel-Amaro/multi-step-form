@@ -115,7 +115,7 @@ export default function Form() {
       aria-label="Form to register and orders"
       onSubmit={handleSubmitForm}
     >
-      <Sidebar />
+      <Sidebar currentStepIndex={currentStepIndex} />
       {isFinish ? (
         <TankYou />
       ) : (
