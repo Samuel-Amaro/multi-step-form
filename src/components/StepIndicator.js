@@ -1,11 +1,19 @@
 
 export default function StepIndicator(props) {
     return (
-      <div className="sidebar__Side-Step">
-        <span className={props.isSelected ? "sidebar__Number-Step--active" : "sidebar__Number-Step"}>{props.number}</span>
-        <div className="sidebar__Container">
-          <span className="sidebar__Info-Step">{props.info}</span>
-          <span className="sidebar__Summary-Step">{props.summary}</span>
+      <div className="step-indicator">
+        <span
+          className={
+            props.isSelected
+              ? "step-indicator__number--active"
+              : "step-indicator__number"
+          }
+        >
+          {props.number}
+        </span>
+        <div className="step-indicator__container">
+          <span className="step-indicator__step">{props.info}</span>
+          <span className="step-indicator__description">{props.summary}</span>
         </div>
       </div>
     );

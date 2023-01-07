@@ -13,7 +13,7 @@ export default function StepPlan(props) {
       title="Select your plan"
       description="You have the option of monthly or yearly billing."
     >
-      <div className="form__Container-Plans">
+      <div className="container-plans">
         {props.datasPlanStart.map((plan, index) => {
           return (
             <CardPlan
@@ -34,15 +34,15 @@ export default function StepPlan(props) {
           );
         })}
       </div>
-      <fieldset className="form__Choose-Plan">
-        <label className="form__Label" htmlFor="option-monthly">
+      <fieldset className="choose-plan">
+        <label className="choose-plan__label" htmlFor="option-monthly">
           Monthly
         </label>
-        <div className="form__Switch-Plan">
+        <div className="choose-plan__switch">
           <input
             type="radio"
             name="plan-option"
-            className="form__Input"
+            className="choose-plan__input"
             value="monthly"
             id="option-monthly"
             title="Option Plan monthly"
@@ -62,7 +62,7 @@ export default function StepPlan(props) {
           <input
             type="radio"
             name="plan-option"
-            className="form__Input"
+            className="choose-plan__input"
             value="yearly"
             id="option-Yearly"
             title="Option Plan Yearly"
@@ -80,12 +80,12 @@ export default function StepPlan(props) {
             checked={planTimeSelected === "yearly" ? true : false}
           />
           <span
-            className="form__Control-Switch"
+            className="choose-plan__control"
             aria-label="Click here to change your subscription plan option"
             title="Click here to change your subscription plan option"
           ></span>
         </div>
-        <label className="form__Label" htmlFor="option-Yearly">
+        <label className="choose-plan__label" htmlFor="option-Yearly">
           Yearly
         </label>
       </fieldset>

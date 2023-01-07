@@ -19,21 +19,21 @@ export default function StepSummary(props) {
       title="Finishing up"
       description="Double-check everything looks OK before confirming."
     >
-      <div className="form__Summary-Wrapper">
-        <div className="form__Summary-Container">
-          <div className="form__Summary-Plan">
-            <div className="form__Wrapper">
-              <p className="form__Plan">{`${props.datas.plan.name}(${props.datas.plan.timePlan})`}</p>
+      <div className="summary">
+        <div className="summary__container">
+          <div className="summary__plan">
+            <div className="summary__wrapper">
+              <p className="summary__description-plan">{`${props.datas.plan.name}(${props.datas.plan.timePlan})`}</p>
               <button
                 type="button"
-                className="form__btn form__Btn--Change"
+                className="summary__btn-change"
                 aria-label="Change Plan"
                 title="Change Plan"
                 onPointerDown={(event) => {
                   props.goTo(1);
                 }}
                 onKeyDown={(event) => {
-                  if(event.key === "Enter") {
+                  if (event.key === "Enter") {
                     props.goTo(1);
                   }
                 }}
@@ -41,26 +41,29 @@ export default function StepSummary(props) {
                 Change
               </button>
             </div>
-            <p className="form__Price-Plan">{`$${props.datas.plan.price}/${timeFormatStr}`}</p>
+            <p className="summary__price-Plan">{`$${props.datas.plan.price}/${timeFormatStr}`}</p>
           </div>
-          <hr className="form__Line-Diviser" />
+          <hr className="summary__line-diviser" />
           {props.datas.addOns.length > 0 && (
-            <div className="form__Summary-Addons">
+            <div className="summary__addons">
               {props.datas.addOns.map((a, index) => {
                 return (
-                  <p className="form__Addons-Wrapper" key={index}>
-                    <span className="form__Name-Addons">{a.name}</span>
-                    <span className="form__Price-Addons">{`+${a.price}/${timeFormatStr}`}</span>
+                  <p className="addons-description" key={index}>
+                    <span className="addons-description__name">{a.name}</span>
+                    <span className="addons-description__price">{`+${a.price}/${timeFormatStr}`}</span>
                   </p>
                 );
               })}
             </div>
           )}
         </div>
-        <div className="form__Summary-Total">
-          <p className="form__Total-Wrapper">
-            <span className="form__Price-Time-Total">{`Total (per ${timeFormatTotal})`}</span>
-            <span className="form__Price-Total">{`+$${getTotal(props.datas.plan, props.datas.addOns)}/${timeFormatStr}`}</span>
+        <div className="total">
+          <p className="total__wrapper">
+            <span className="total__description">{`Total (per ${timeFormatTotal})`}</span>
+            <span className="total__price">{`+$${getTotal(
+              props.datas.plan,
+              props.datas.addOns
+            )}/${timeFormatStr}`}</span>
           </p>
         </div>
       </div>

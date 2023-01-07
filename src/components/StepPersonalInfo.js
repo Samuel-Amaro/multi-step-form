@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import FormWrapper from "./FormWrapper";
+import Label from "./Label";
 
 export default function StepPersonalInfo(props) {
   const emailRegexExp =
@@ -13,9 +14,36 @@ export default function StepPersonalInfo(props) {
   };
   const [formErros, setFormErros] = useState({});
 
-  function validate(valuesFields) {
+  //TODO: COMPONENTE INPUT PRECISANDO TERMINAR
+  //TODO: COMPONENTE LABEL PENSAR EM MODIFICADORES, E NO INPUT TAMBÉM, UTILIZA O CLASS NAMES PACKAGE PARA CRIAR AS CLASS MODIFICADORE DINAMICAS, CRIA UM UNICO COMPNENTE LABEL E INPUT E USAR APLICANDO MODIFICADORES
+
+  function validate(/*valuesFields*/ field, value) {
     const erros = {};
-    if (!valuesFields.name.trim()) {
+    //se o campo for vazio
+    switch (field) {
+      case "name":
+        if (!value.trim()) {
+          erros.name = "This field is required";
+        }
+        break;
+      case "email":
+        if (!value.trim()) {
+          erros.email = "This field is required";
+        } else if (!emailRegexExp.test(value)) {
+          erros.email = "This not valid email format!";
+        }
+        break;
+      case "phone":
+        if (!value.trim()) {
+          erros.phone = "This field is required";
+        } else if (!phoneRegexpExp.test(value)) {
+          erros.phone = "This not valid number phone format!";
+        }
+        break;
+      default:
+        break;
+    }
+    /*if (!valuesFields.name.trim()) {
       erros.name = "This field is required";
     }
     if (!valuesFields.email.trim()) {
@@ -28,7 +56,20 @@ export default function StepPersonalInfo(props) {
     } else if (!phoneRegexpExp.test(valuesFields.phone)) {
       erros.phone = "This not valid number phone format!";
     }
+    */
     return erros;
+  }
+
+  function handleInputChange(event) {
+    props.updateFields({ [event.target.name]: event.target.value });
+    setFormErros(
+      validate(
+        /*{
+          [event.target.name]: event.target.value
+        }*/ event.target.name,
+        event.target.value
+      )
+    );
   }
 
   useEffect(() => {
@@ -47,61 +88,76 @@ export default function StepPersonalInfo(props) {
       title="Personal info"
       description="Please provide your name, email address, and phone number."
     >
-      <div className="form__Group">
+      <div className="form-group">
         {formErros.name ? (
-          <p className="form__Wrapper-Labels">
-            <label htmlFor="name" className="form__Label">
+          <p className="form-group__wrapper-labels">
+            <Label for="name">Name</Label>
+            {/*<label htmlFor="name" className="form-group__label">
               Name
-            </label>
-            <span className="form__Error" aria-live="polite">
+            </label>*/}
+            <span className="form-group__error" aria-live="polite">
               {formErros.name}
             </span>
           </p>
         ) : (
-          <label htmlFor="name" className="form__Label">
+          <Label for="name">Name</Label>
+          /*<label htmlFor="name" className="form-group__label">
             Name
           </label>
+          */
         )}
         <input
           type="text"
-          className="form__Input"
+          className="form-group__input"
           id="name"
+          name="name"
           placeholder="e.g. Stephen King"
           value={initialValues.name}
           onChange={(event) => {
-            props.updateFields({ name: event.target.value });
+            /*props.updateFields({ name: event.target.value });
             setFormErros(
-              validate({ name: event.target.value, email: props.datas.email, phone: props.datas.phone })
+              validate({
+                name: event.target.value,
+                email: props.datas.email,
+                phone: props.datas.phone,
+              })
             );
+            */
+            handleInputChange(event);
           }}
           required
           min="3"
           title="Please enter with name"
         />
       </div>
-      <div className="form__Group">
+      <div className="form-group">
         {formErros.email ? (
-          <p className="form__Wrapper-Labels">
-            <label htmlFor="email" className="form__Label">
+          <p className="form-group__wrapper-labels">
+            <Label for="email">Email Address</Label>
+            {/*<label htmlFor="email" className="form-group__label">
               Email Address
             </label>
-            <span className="form__Error" aria-live="polite">
+            */}
+            <span className="form-group__error" aria-live="polite">
               {formErros.email}
             </span>
           </p>
         ) : (
-          <label htmlFor="email" className="form__Label">
+          <Label for="email">
             Email Address
-          </label>
+          </Label> /*<label htmlFor="email" className="form-group__label">
+            Email Address
+          </label>*/
         )}
         <input
           type="email"
-          className="form__Input"
+          className="form-group__input"
           id="email"
+          name="email"
           placeholder="e.g. stephenking@lorem.com"
           value={initialValues.email}
           onChange={(event) => {
-            props.updateFields({ email: event.target.value });
+            /*props.updateFields({ email: event.target.value });
             setFormErros(
               validate({
                 name: props.datas.name,
@@ -109,34 +165,42 @@ export default function StepPersonalInfo(props) {
                 phone: props.datas.phone,
               })
             );
+            */
+            handleInputChange(event);
           }}
           required
           title="Please enter with email addres with format e.g. stephenking@lorem.com"
         />
       </div>
-      <div className="form__Group">
+      <div className="form-group">
         {formErros.phone ? (
-          <p className="form__Wrapper-Labels">
-            <label htmlFor="phone" className="form__Label">
+          <p className="form-group__wrapper-labels">
+            <Label for="phone">Phone Number</Label>
+            {/*
+            <label htmlFor="phone" className="form-group__label">
               Phone Number
             </label>
-            <span className="form__Error" aria-live="polite">
+            */}
+            <span className="form-group__error" aria-live="polite">
               {formErros.phone}
             </span>
           </p>
         ) : (
-          <label htmlFor="phone" className="form__Label">
+          <Label for="phone">Phone Number</Label>
+          /*<label htmlFor="phone" className="form-group__label">
             Phone Number
           </label>
+          */
         )}
         <input
           type="tel"
-          className="form__Input"
+          className="form-group__input"
           id="phone"
+          name="phone"
           placeholder="e.g. +1 234 567 890"
           value={initialValues.phone}
           onChange={(event) => {
-            props.updateFields({ phone: event.target.value });
+            /*props.updateFields({ phone: event.target.value });
             setFormErros(
               validate({
                 name: props.datas.name,
@@ -144,6 +208,8 @@ export default function StepPersonalInfo(props) {
                 phone: event.target.value,
               })
             );
+            */
+            handleInputChange(event);
           }}
           required
           min="13"

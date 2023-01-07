@@ -12,7 +12,7 @@ export default function CardPlan(props) {
   return (
     <div
       className={
-        props.isSelected ? "Card-Plan card-plan--selected" : "Card-Plan"
+        props.isSelected ? "card-plan card-plan--selected" : "card-plan"
       }
       onPointerDown={(event) => {
         props.updateFields({
@@ -47,18 +47,18 @@ export default function CardPlan(props) {
       <img
         aria-hidden="true"
         alt=""
-        className="card-plan__Icon-Ilustration"
+        className="card-plan__icon-ilustration"
         src={props.src}
       />
       <div>
-        <h5 className="card-plan__Name-Plan">{props.namePlan}</h5>
+        <h5 className="card-plan__name">{props.namePlan}</h5>
         <p className="card-plan__price">{`$${calcPrice(
           props.planTimeSelected,
           props.price,
           props.factorMultiply
         )}/${strFormatTimePlan}`}</p>
         {strFormatTimePlan === "yr" && (
-          <p className="card-plan__Alert-Prom">2 months free</p>
+          <p className="card-plan__alert-prom">2 months free</p>
         )}
       </div>
     </div>

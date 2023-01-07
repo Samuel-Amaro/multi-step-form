@@ -67,10 +67,10 @@ export default function CardAddons({
   }
 
   return (
-    <div className="form__Card-Addons" tabIndex="0">
+    <div className="card-addons" tabIndex="0">
       <input
         type="checkbox"
-        className="form__Input"
+        className="card-addons__Input"
         id={nameAttributerHTML}
         name={nameAttributerHTML}
         value={name.toLowerCase()}
@@ -79,19 +79,20 @@ export default function CardAddons({
         onChange={(event) => {
           setIsChecked(!isChecked);
         }}
+        title={description}
       />
-      <p className="form__Container-Description-Addons">
-        <label className="form__Label" htmlFor={nameAttributerHTML}>
+      <p className="card-addons__descriptions">
+        <label className="card-addons__Label" htmlFor={nameAttributerHTML}>
           {name}
         </label>
         <span
-          className="form__Description"
+          className="card-addons__description"
           id={`description-${nameAttributerHTML}`}
         >
           {description}
         </span>
       </p>
-      <p className="form__Price-Addons">
+      <p className="card-addons__price">
         +${calcPrice}/{strFormatTimePlan}
       </p>
     </div>

@@ -2,8 +2,8 @@
 export default function FormWrapper(props) {
     return (
       <>
-        <h1 className="form__Title">{props.title}</h1>
-        <p className="form__Description">{props.description}</p>
+        <h1 className="title">{props.title}</h1>
+        <p className="description">{props.description}</p>
         {
             props.children
         }
