@@ -1,4 +1,5 @@
 import StepIndicator from "./StepIndicator";
+import "./Sidebar.css";
 
 export default function Sidebar(props) {
   const data = [
@@ -8,7 +9,7 @@ export default function Sidebar(props) {
     { numberStep: 4, info: "Step 4", summary: "Summary" },
   ];
   return (
-    <aside className="Sidebar">
+    <aside className="sidebar">
      {
         data.map((dataStep, index) => {
             return (

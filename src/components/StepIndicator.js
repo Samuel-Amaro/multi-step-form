@@ -1,3 +1,4 @@
+import "./StepIndicator.css";
 
 export default function StepIndicator(props) {
     return (
@@ -5,7 +6,7 @@ export default function StepIndicator(props) {
         <span
           className={
             props.isSelected
-              ? "step-indicator__number--active"
+              ? "step-indicator__number step-indicator__number--active"
               : "step-indicator__number"
           }
         >

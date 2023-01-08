@@ -7,6 +7,7 @@ import useData from "../functions/useData";
 import StepSummary from "./StepSummary";
 import TankYou from "./TankYou";
 import Button from "./Button";
+import "./Form.css";
 
 export default function Form() {
 
@@ -88,7 +89,7 @@ export default function Form() {
 
   return (
     <form
-      className="Form"
+      className="form"
       aria-label="Form to register and orders"
       onSubmit={handleSubmitForm}
     >

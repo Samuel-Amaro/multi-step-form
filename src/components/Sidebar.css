@@ -1,0 +1,14 @@
+/******MOBILE-FIRST*****/
+
+.sidebar {
+  background-image: url("../assets/images/bg-sidebar-mobile.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left center;
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 32px 0;
+  height: 172px;
+}
+
+

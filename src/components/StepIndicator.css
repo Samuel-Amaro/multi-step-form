@@ -1,0 +1,15 @@
+.step-indicator__container{
+    display: none;
+}
+
+.step-indicator__number{
+    display: block;
+    background-color: transparent;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--white);
+    border: 1px solid var(--alabaster);
+    padding: 6px 12px 8px 12px;
+    text-align: center;
+    border-radius: 50%;
+}
