@@ -1,6 +1,10 @@
+import classNames from "classnames";
 
 export default function Label(props) {
-    return (
-        <label className="label" htmlFor={props.for}>{props.children}</label>
-    );
+  const classes = classNames("label", props.className);
+  return (
+    <label className={classes} htmlFor={props.for}>
+      {props.children}
+    </label>
+  );
 }

@@ -6,6 +6,7 @@ import { useState } from "react";
 import useData from "../functions/useData";
 import StepSummary from "./StepSummary";
 import TankYou from "./TankYou";
+import Button from "./Button";
 
 export default function Form() {
 
@@ -81,6 +82,10 @@ export default function Form() {
     setIsFinish(true);
   }
 
+  function handlePointerBtn(event) {
+    backStep();
+  }
+
   return (
     <form
       className="Form"
@@ -95,26 +100,21 @@ export default function Form() {
           <section className="form__Content">{steps[currentStepIndex]}</section>
           <div className="form__Buttons">
             {currentStepIndex !== 0 && (
-              <button
+              <Button
+                className="form__btn"
                 type="button"
-                className="form__Btn form__btn--Previous"
-                aria-label="Button Go Back Step from Form"
-                title="Button Go Back Step from Form"
-                onPointerDown={(event) => {
-                  backStep();
-                }}
+                label="Button Go Back Step from Form"
+                onHandle={handlePointerBtn}
               >
                 Go Back
-              </button>
+              </Button>
             )}
-            <button
+            <Button
+              className="form__btn"
               type="submit"
-              className={
-                currentStepIndex !== steps.length - 1
-                  ? "form__Btn form__btn--Next"
-                  : "form__Btn form__btn--Confirm"
-              }
-              aria-label={
+              next={currentStepIndex !== steps.length - 1 ? true : false}
+              confirm={currentStepIndex !== steps.length - 1 ? false : true}
+              label={
                 currentStepIndex !== steps.length - 1
                   ? "Button Next Step from Form"
                   : "Button Confirm Submit from Form"
@@ -124,9 +124,10 @@ export default function Form() {
                   ? "Button Next Step from Form"
                   : "Button Confirm Submit from Form"
               }
+              onHandle={undefined}
             >
               {currentStepIndex !== steps.length - 1 ? "Next Step" : "Confirm"}
-            </button>
+            </Button>
           </div>
         </>
       )}

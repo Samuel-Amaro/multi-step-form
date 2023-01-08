@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Input from "./Input";
 
 export default function CardAddons({
   name,
@@ -66,20 +67,25 @@ export default function CardAddons({
     });
   }
 
+  function handleOnChange(event) {
+    setIsChecked(!isChecked);
+  }
+
   return (
     <div className="card-addons" tabIndex="0">
-      <input
+      <Input
+        className="card-addons__input"
         type="checkbox"
-        className="card-addons__Input"
         id={nameAttributerHTML}
         name={nameAttributerHTML}
+        placeholder={undefined}
         value={name.toLowerCase()}
-        aria-labelledby={`description-${nameAttributerHTML}`}
-        checked={isChecked}
-        onChange={(event) => {
-          setIsChecked(!isChecked);
-        }}
+        onHandle={handleOnChange}
+        required={false}
+        min={undefined}
+        pattern={undefined}
         title={description}
+        checked={isChecked}
       />
       <p className="card-addons__descriptions">
         <label className="card-addons__Label" htmlFor={nameAttributerHTML}>

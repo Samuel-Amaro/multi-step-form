@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import FormWrapper from "./FormWrapper";
 import Label from "./Label";
+import Input from "./Input";
 
 export default function StepPersonalInfo(props) {
   const emailRegexExp =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   const phoneRegexpExp =
     /[0-9]{1}[\s]{1}[0-9]{3}[\s]{1}[0-9]{3}[\s]{1}[0-9]{3}/;
+  const phoneRegexExpAttribute =
+    `[0-9]{1}[\\s]{1}[0-9]{3}[\\s]{1}[0-9]{3}[\\s]{1}[0-9]{3}`;
   const initialValues = {
     name: props.datas.name,
     email: props.datas.email,
@@ -14,36 +17,10 @@ export default function StepPersonalInfo(props) {
   };
   const [formErros, setFormErros] = useState({});
 
-  //TODO: COMPONENTE INPUT PRECISANDO TERMINAR
-  //TODO: COMPONENTE LABEL PENSAR EM MODIFICADORES, E NO INPUT TAMBÉM, UTILIZA O CLASS NAMES PACKAGE PARA CRIAR AS CLASS MODIFICADORE DINAMICAS, CRIA UM UNICO COMPNENTE LABEL E INPUT E USAR APLICANDO MODIFICADORES
-
-  function validate(/*valuesFields*/ field, value) {
+  function validate(valuesFields) {
     const erros = {};
     //se o campo for vazio
-    switch (field) {
-      case "name":
-        if (!value.trim()) {
-          erros.name = "This field is required";
-        }
-        break;
-      case "email":
-        if (!value.trim()) {
-          erros.email = "This field is required";
-        } else if (!emailRegexExp.test(value)) {
-          erros.email = "This not valid email format!";
-        }
-        break;
-      case "phone":
-        if (!value.trim()) {
-          erros.phone = "This field is required";
-        } else if (!phoneRegexpExp.test(value)) {
-          erros.phone = "This not valid number phone format!";
-        }
-        break;
-      default:
-        break;
-    }
-    /*if (!valuesFields.name.trim()) {
+    if (!valuesFields.name.trim()) {
       erros.name = "This field is required";
     }
     if (!valuesFields.email.trim()) {
@@ -56,18 +33,30 @@ export default function StepPersonalInfo(props) {
     } else if (!phoneRegexpExp.test(valuesFields.phone)) {
       erros.phone = "This not valid number phone format!";
     }
-    */
     return erros;
   }
 
   function handleInputChange(event) {
+    const fieldsValues = {
+      [event.target.name]: event.target.value,
+    };
     props.updateFields({ [event.target.name]: event.target.value });
+    const fields = ["name", "email", "phone"].filter((field) => {
+      return field !== event.target.name;
+    });
+    for (const key in props.datas) {
+      if (fields.includes(key)) {
+        Object.defineProperty(fieldsValues, key, {
+          enumerable: true, 
+          configurable: true, 
+          writable: true,
+          value: props.datas[key],
+        });
+      }
+    }
     setFormErros(
       validate(
-        /*{
-          [event.target.name]: event.target.value
-        }*/ event.target.name,
-        event.target.value
+        fieldsValues
       )
     );
   }
@@ -91,130 +80,91 @@ export default function StepPersonalInfo(props) {
       <div className="form-group">
         {formErros.name ? (
           <p className="form-group__wrapper-labels">
-            <Label for="name">Name</Label>
-            {/*<label htmlFor="name" className="form-group__label">
+            <Label for="name" className="form-group__label">
               Name
-            </label>*/}
+            </Label>
             <span className="form-group__error" aria-live="polite">
               {formErros.name}
             </span>
           </p>
         ) : (
-          <Label for="name">Name</Label>
-          /*<label htmlFor="name" className="form-group__label">
+          <Label for="name" className="form-group__label">
             Name
-          </label>
-          */
+          </Label>
         )}
-        <input
-          type="text"
+        <Input
           className="form-group__input"
+          type="text"
           id="name"
           name="name"
           placeholder="e.g. Stephen King"
           value={initialValues.name}
-          onChange={(event) => {
-            /*props.updateFields({ name: event.target.value });
-            setFormErros(
-              validate({
-                name: event.target.value,
-                email: props.datas.email,
-                phone: props.datas.phone,
-              })
-            );
-            */
-            handleInputChange(event);
-          }}
-          required
+          onHandle={handleInputChange}
+          required={true}
           min="3"
+          pattern={undefined}
           title="Please enter with name"
+          checked={undefined}
         />
       </div>
       <div className="form-group">
         {formErros.email ? (
           <p className="form-group__wrapper-labels">
-            <Label for="email">Email Address</Label>
-            {/*<label htmlFor="email" className="form-group__label">
+            <Label for="email" className="form-group__label">
               Email Address
-            </label>
-            */}
+            </Label>
             <span className="form-group__error" aria-live="polite">
               {formErros.email}
             </span>
           </p>
         ) : (
-          <Label for="email">
+          <Label for="email" className="form-group__label">
             Email Address
-          </Label> /*<label htmlFor="email" className="form-group__label">
-            Email Address
-          </label>*/
+          </Label>
         )}
-        <input
-          type="email"
+        <Input
           className="form-group__input"
+          type="text"
           id="email"
           name="email"
           placeholder="e.g. stephenking@lorem.com"
           value={initialValues.email}
-          onChange={(event) => {
-            /*props.updateFields({ email: event.target.value });
-            setFormErros(
-              validate({
-                name: props.datas.name,
-                email: event.target.value,
-                phone: props.datas.phone,
-              })
-            );
-            */
-            handleInputChange(event);
-          }}
-          required
+          onHandle={handleInputChange}
+          required={true}
+          min={undefined}
+          pattern={undefined}
           title="Please enter with email addres with format e.g. stephenking@lorem.com"
+          checked={undefined}
         />
       </div>
       <div className="form-group">
         {formErros.phone ? (
           <p className="form-group__wrapper-labels">
-            <Label for="phone">Phone Number</Label>
-            {/*
-            <label htmlFor="phone" className="form-group__label">
+            <Label for="phone" className="form-group__label">
               Phone Number
-            </label>
-            */}
+            </Label>
             <span className="form-group__error" aria-live="polite">
               {formErros.phone}
             </span>
           </p>
         ) : (
-          <Label for="phone">Phone Number</Label>
-          /*<label htmlFor="phone" className="form-group__label">
+          <Label for="phone" className="form-group__label">
             Phone Number
-          </label>
-          */
+          </Label>
         )}
-        <input
-          type="tel"
+        <Input
           className="form-group__input"
+          type="tel"
           id="phone"
           name="phone"
           placeholder="e.g. +1 234 567 890"
           value={initialValues.phone}
-          onChange={(event) => {
-            /*props.updateFields({ phone: event.target.value });
-            setFormErros(
-              validate({
-                name: props.datas.name,
-                email: props.datas.email,
-                phone: event.target.value,
-              })
-            );
-            */
-            handleInputChange(event);
-          }}
-          required
+          onHandle={handleInputChange}
+          required={true}
           min="13"
-          pattern="[0-9]{1}[\s]{1}[0-9]{3}[\s]{1}[0-9]{3}[\s]{1}[0-9]{3}"
+          pattern={phoneRegexExpAttribute}
           title="Please enter with number phone with format e.g. +1 234 567 890"
+          checked={undefined}
         />
       </div>
     </FormWrapper>
