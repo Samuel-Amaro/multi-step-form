@@ -1,9 +1,11 @@
 import classNames from "classnames";
+import "./Button.css";
 
 export default function Button(props) {
     const classes = classNames('button', props.className, {
         'button--next': props.next,
-        'button--confirm': props.confirm
+        'button--confirm': props.confirm,
+        'button--goback': props.goBack
     });
 
     return (

@@ -1,0 +1,24 @@
+.button{
+    display: block;
+    font-family: inherit;
+    appearance: none;
+    border: none;
+}
+
+.button--next{
+    background-color: var(--marine-blue);
+    color: var(--magnolia);
+}
+
+.button--next:hover, .button--next:focus{
+    opacity: 0.95;
+}
+
+.button--goback{
+    background-color: transparent;
+    color: var(--cool-gray);
+}
+
+.button--goback:hover, .button--goback:focus{
+    color: var(--marine-blue);
+}

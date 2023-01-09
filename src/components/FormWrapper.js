@@ -1,3 +1,4 @@
+import "./FormWrapper.css";
 
 export default function FormWrapper(props) {
     return (

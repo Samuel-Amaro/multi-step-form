@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import FormWrapper from "./FormWrapper";
 import Label from "./Label";
 import Input from "./Input";
+import "./StepPersonalInfo.css";
 
 export default function StepPersonalInfo(props) {
   const emailRegexExp =

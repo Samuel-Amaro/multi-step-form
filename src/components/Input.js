@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import "./Input.css";
 
 export default function Input({className, type, id, name, placeholder, value, onHandle, required, min, pattern, title, checked}) {
     const classes = classNames('input', className);

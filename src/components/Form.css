@@ -2,3 +2,34 @@
     display: block;
     width: 100%;
 }
+
+.form__content{
+    background-color: var(--white);
+    margin: 0 15px;
+    position: absolute;
+    top: 99px;
+    z-index: 999;
+    padding: 32px 25px;
+    border-radius: 11px;
+    box-shadow: 0 1px 18px 2px rgba(0, 0, 0, 0.1);
+}
+
+.form__buttons{
+    position: absolute;
+    bottom: 0;
+    z-index: 1000;
+    display: flex;
+    flex-flow: row nowrap;
+    background-color: var(--white);
+    width: 100%;
+    padding: 16px 15px;
+    justify-content: space-between;
+}
+
+.form__btn{
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 11px 10px 12px 10px;
+    border-radius: 3px;
+}

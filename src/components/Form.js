@@ -98,11 +98,12 @@ export default function Form() {
         <TankYou />
       ) : (
         <>
-          <section className="form__Content">{steps[currentStepIndex]}</section>
-          <div className="form__Buttons">
+          <section className="form__content">{steps[currentStepIndex]}</section>
+          <div className="form__buttons">
             {currentStepIndex !== 0 && (
               <Button
                 className="form__btn"
+                goBack={true}
                 type="button"
                 label="Button Go Back Step from Form"
                 onHandle={handlePointerBtn}
@@ -115,6 +116,7 @@ export default function Form() {
               type="submit"
               next={currentStepIndex !== steps.length - 1 ? true : false}
               confirm={currentStepIndex !== steps.length - 1 ? false : true}
+              goBack={false}
               label={
                 currentStepIndex !== steps.length - 1
                   ? "Button Next Step from Form"

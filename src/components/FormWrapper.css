@@ -1,0 +1,15 @@
+.title{
+    color: var(--marine-blue);
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin: 0 0 9px 0;
+}
+
+.description{
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--cool-gray);
+    line-height: 1.56;
+    width: 295px;
+    margin: 0 0 21px 0;
+}
