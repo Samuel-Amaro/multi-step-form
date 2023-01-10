@@ -11,6 +11,8 @@ import "./Form.css";
 
 export default function Form() {
 
+  //TODO: PENSAR NUMA FORMA DE ALINHAR BOTÃO NEXT QUANDO SO NA DIREITA
+
   const { datas, setDatas, dataAddons, datasPlanStart } = useData();
   const [isFinish, setIsFinish] = useState(false);
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
@@ -98,7 +100,9 @@ export default function Form() {
         <TankYou />
       ) : (
         <>
-          <section className="form__content">{steps[currentStepIndex]}</section>
+        {/*TODO: PENSAR NUMA FORMA DE DAR MG-BOTTOM DE VALORES DINAMICOS DE ACORDO COM O STEP RENDERIZADO*/}
+          {/*<section className="form__content">{steps[currentStepIndex]}</section>*/}
+          {steps[currentStepIndex]}
           <div className="form__buttons">
             {currentStepIndex !== 0 && (
               <Button

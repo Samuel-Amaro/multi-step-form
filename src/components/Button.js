@@ -9,7 +9,7 @@ export default function Button(props) {
     });
 
     return (
-        <button className={classes} type={props.type} aria-label={props.label} title={props.label} onPointerDown={(event) => props.onHandle(event)} onKeyDown={(event) => {
+        <button className={classes} type={props.type} aria-label={props.label} title={props.label} onPointerDown={props.onHandle ? (event) => props.onHandle(event) : undefined} onKeyDown={(event) => {
             if(event.key === "Enter") {
                 props.onHandle(event);
             }

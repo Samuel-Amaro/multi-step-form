@@ -8,6 +8,7 @@
 .button--next{
     background-color: var(--marine-blue);
     color: var(--magnolia);
+    margin: 0 0 0 auto;
 }
 
 .button--next:hover, .button--next:focus{

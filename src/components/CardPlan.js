@@ -1,3 +1,4 @@
+import "./CardPlan.css";
 
 function calcPrice(timePlan, price, factorMultiply) {
   if(timePlan.toLowerCase() === "monthly") {

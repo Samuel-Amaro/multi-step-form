@@ -1,0 +1,48 @@
+.card-plan{
+    cursor: pointer;
+    display: flex;
+    flex-flow: row nowrap;
+    border: 1px solid var(--light-gray);
+    padding: 16px 14px 17px 14px;
+    border-radius: 5px;
+    gap: 14px;
+}
+
+.card-plan--selected, .card-plan:hover, .card-plan:focus{
+    border-color: var(--purplish-blue);
+}
+
+.card-plan:hover, .card-plan:focus{
+    outline: none;
+}
+
+.card-plan--selected{
+    background-color: var(--alabaster);
+}
+
+.card-plan__icon-ilustration{
+    display: block;
+    width: 40px;
+    height: 40px;
+}
+
+.card-plan__name{
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--marine-blue);
+    margin: 0 0 7px 0;
+    padding: 1px 0 0 0;
+}
+
+.card-plan__price{
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: var(--cool-gray);
+}
+
+.card-plan__alert-prom{
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: var(--marine-blue);
+    margin: 6px 0 2px 0;
+}

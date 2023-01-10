@@ -77,6 +77,7 @@ export default function StepPersonalInfo(props) {
     <FormWrapper
       title="Personal info"
       description="Please provide your name, email address, and phone number."
+      className="form-wrapper__personal"
     >
       <div className="form-group">
         {formErros.name ? (

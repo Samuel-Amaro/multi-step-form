@@ -1,0 +1,65 @@
+.container-plans {
+  padding: 1px 0 0 0;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 12px;
+  margin: 0 0 23px 0;
+}
+
+.choose-plan {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  border: none;
+  outline: none;
+  background-color: var(--magnolia);
+  padding: 15px 0 15px 0;
+  border-radius: 5px;
+  justify-content: center;
+}
+
+.choose-plan__label {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--marine-blue);
+}
+
+.choose-plan__switch {
+  background-color: var(--marine-blue);
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 3px;
+  width: 38px;
+  position: relative;
+  border-radius: 15px;
+  margin: 0 22px;
+}
+
+.choose-plan__control {
+  display: block;
+  position: absolute;
+  background-color: white;
+  transition: all 0.35s ease;
+}
+
+.choose-plan__input,
+.choose-plan__control {
+  width: auto;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.choose-plan__input:nth-child(1):checked ~ .choose-plan__control {
+  left: 3px;
+}
+
+.choose-plan__input:nth-child(2):checked ~ .choose-plan__control {
+  right: 3px;
+}
+
+.form-wrapper__plan{
+    margin-bottom: 0;
+}
