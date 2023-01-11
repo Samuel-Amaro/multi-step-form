@@ -59,7 +59,3 @@
 .choose-plan__input:nth-child(2):checked ~ .choose-plan__control {
   right: 3px;
 }
-
-.form-wrapper__plan{
-    margin-bottom: 0;
-}

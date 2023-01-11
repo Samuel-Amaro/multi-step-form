@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Input from "./Input";
+import Label from "./Label";
+import "./CardAddons.css";
 
 export default function CardAddons({
   name,
@@ -14,8 +16,7 @@ export default function CardAddons({
   const nameAttributerHTML = name.toLowerCase().split(" ").join("-");
   const strFormatTimePlan =
     planSelectedTime.toLowerCase() === "monthly" ? "mo" : "yr";
-  const calcPrice =
-    strFormatTimePlan === "mo" ? price : parseInt(price) * 10;
+  const calcPrice = strFormatTimePlan === "mo" ? price : parseInt(price) * 10;
   const [isChecked, setIsChecked] = useState(isCheckedP);
 
   //apos atualizar state local, atualiza o state do form
@@ -54,9 +55,7 @@ export default function CardAddons({
 
   function removeAddonsDeselected(addOns) {
     const filteredAddons = addonsSelecteds.filter((ao) => {
-      return (
-        addOns.name.toLowerCase() !== ao.name.toLowerCase() 
-      );
+      return addOns.name.toLowerCase() !== ao.name.toLowerCase();
     });
     return filteredAddons;
   }
@@ -72,7 +71,13 @@ export default function CardAddons({
   }
 
   return (
-    <div className="card-addons" tabIndex="0">
+    <div
+      className={
+        isCheckedP ? "card-addons card-addons--selected" : "card-addons"
+      }
+      tabIndex="0"
+      title="tick the checkbox that corresponds to the add-on services you want"
+    >
       <Input
         className="card-addons__input"
         type="checkbox"
@@ -86,11 +91,12 @@ export default function CardAddons({
         pattern={undefined}
         title={description}
         checked={isChecked}
+        onKeyDown={handleOnChange}
       />
       <p className="card-addons__descriptions">
-        <label className="card-addons__Label" htmlFor={nameAttributerHTML}>
+        <Label className="card-addons__label" for={nameAttributerHTML}>
           {name}
-        </label>
+        </Label>
         <span
           className="card-addons__description"
           id={`description-${nameAttributerHTML}`}

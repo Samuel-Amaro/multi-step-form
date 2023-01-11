@@ -27,7 +27,7 @@ export default function StepPlan(props) {
     <FormWrapper
       title="Select your plan"
       description="You have the option of monthly or yearly billing."
-      className="form-wrapper__plan"
+      plan={true}
     >
       <div className="container-plans">
         {props.datasPlanStart.map((plan, index) => {
@@ -68,6 +68,7 @@ export default function StepPlan(props) {
             pattern={undefined}
             title="Option Plan monthly"
             checked={planTimeSelected === "monthly" ? true : false}
+            onKeyDown={undefined}
           />
           {/*<input
             type="radio"
@@ -103,6 +104,7 @@ export default function StepPlan(props) {
             pattern={undefined}
             title="Option Plan Yearly"
             checked={planTimeSelected === "yearly" ? true : false}
+            onKeyDown={undefined}
           />
           {/*<input
             type="radio"

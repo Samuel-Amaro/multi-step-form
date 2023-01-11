@@ -15,6 +15,12 @@ export default function CardPlan(props) {
       className={
         props.isSelected ? "card-plan card-plan--selected" : "card-plan"
       }
+      title={`Option Plan ${props.namePlan}`}
+      aria-label={`Option Plan ${props.namePlan} with price ${calcPrice(
+        props.planTimeSelected,
+        props.price,
+        props.factorMultiply
+      )}`}
       onPointerDown={(event) => {
         props.updateFields({
           plan: {
@@ -29,7 +35,7 @@ export default function CardPlan(props) {
         });
       }}
       onKeyDown={(event) => {
-        if (event.key === "Enter") {
+        if (event.code === "Enter") {
           props.updateFields({
             plan: {
               name: props.namePlan,

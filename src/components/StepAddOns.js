@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CardAddons from "./CardAddons";
 import FormWrapper from "./FormWrapper";
+import "./StepAddOns.css";
 
 export default function StepAddOns(props) {
   
@@ -18,22 +19,25 @@ export default function StepAddOns(props) {
     <FormWrapper
       title="Pick add-ons"
       description="Add-ons help enhance your gaming experience."
+      addOns={true}
     >
-      {props.dataAddons.map((addOns, index) => {
-        return (
-          <CardAddons
-            name={addOns.name}
-            description={addOns.description}
-            price={addOns.price}
-            planSelectedTime={props.datas.plan.timePlan}
-            key={index}
-            isCheckedP={isCheckedAddOns(addOns) ? true : false}
-            updateFields={props.updateFields}
-            setAddonsSelecteds={setAddonsSelecteds}
-            addonsSelecteds={addonsSelecteds}
-          />
-        );
-      })}
+      <div className="cards-addons">
+        {props.dataAddons.map((addOns, index) => {
+          return (
+            <CardAddons
+              name={addOns.name}
+              description={addOns.description}
+              price={addOns.price}
+              planSelectedTime={props.datas.plan.timePlan}
+              key={index}
+              isCheckedP={isCheckedAddOns(addOns) ? true : false}
+              updateFields={props.updateFields}
+              setAddonsSelecteds={setAddonsSelecteds}
+              addonsSelecteds={addonsSelecteds}
+            />
+          );
+        })}
+      </div>
     </FormWrapper>
   );
 }

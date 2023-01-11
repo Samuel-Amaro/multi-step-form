@@ -1,0 +1,73 @@
+.card-addons{
+    display: flex;
+    flex-flow: row nowrap;
+    border: 1px solid var(--light-gray);
+    padding: 13px 15px 13px 15px;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card-addons:hover, .card-addons:focus{
+    border-color: var(--purplish-blue);
+    outline: none;
+}
+
+.card-addons--selected{
+    border-color: var(--purplish-blue);
+    background-color: var(--alabaster);
+}
+
+.card-addons__input{
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--light-gray);
+    position: relative;
+    border-radius: 5px;
+    background-color: transparent;
+    outline: none;
+    margin: 0 15px 0 0;
+}
+
+.card-addons__input:focus{
+    border-color: var(--purplish-blue);
+}
+
+.card-addons__input:checked{
+    background-color: var(--purplish-blue);
+    transition: all 0.35s ease;
+    border: none;
+}
+
+.card-addons__input:checked:before{
+    position: absolute;
+    display: block;
+    content: url("../assets/images/icon-checkmark.svg");
+    left: 4px;
+    border: none;
+    outline: none;
+}
+
+.card-addons__description{
+    display: block;
+    font-weight: 400;
+    font-size: 0.78rem;
+    color: var(--cool-gray);
+}
+
+.card-addons__label{
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--marine-blue);
+    margin: 0 0 3px 0;
+}
+
+.card-addons__price{
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: var(--purplish-blue);
+}
+
+.card-addons__descriptions{
+    margin: 0 auto 0 0;
+}

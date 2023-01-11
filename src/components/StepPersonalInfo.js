@@ -77,7 +77,7 @@ export default function StepPersonalInfo(props) {
     <FormWrapper
       title="Personal info"
       description="Please provide your name, email address, and phone number."
-      className="form-wrapper__personal"
+      personalInfo={true}
     >
       <div className="form-group">
         {formErros.name ? (
@@ -107,6 +107,7 @@ export default function StepPersonalInfo(props) {
           pattern={undefined}
           title="Please enter with name"
           checked={undefined}
+          onKeyDown={undefined}
         />
       </div>
       <div className="form-group">
@@ -137,6 +138,7 @@ export default function StepPersonalInfo(props) {
           pattern={undefined}
           title="Please enter with email addres with format e.g. stephenking@lorem.com"
           checked={undefined}
+          onKeyDown={undefined}
         />
       </div>
       <div className="form-group">
@@ -167,6 +169,7 @@ export default function StepPersonalInfo(props) {
           pattern={phoneRegexExpAttribute}
           title="Please enter with number phone with format e.g. +1 234 567 890"
           checked={undefined}
+          onKeyDown={undefined}
         />
       </div>
     </FormWrapper>

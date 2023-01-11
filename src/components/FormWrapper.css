@@ -1,16 +1,24 @@
 .form-wrapper{
     background-color: var(--white);
-    position: relative;
-    top: -73px;
+    /*position: relative;
+    top: -73px;*/
     padding: 32px 25px;
     border-radius: 11px;
     box-shadow: 0 1px 18px 2px rgba(0, 0, 0, 0.1);
     max-width: 345px;
-    margin: 0 auto;
+    margin: -73px auto 0 auto;
 }
 
 .form-wrapper--step-personal{
-    margin-bottom: 49px;
+    margin-bottom: 121px;
+}
+
+.form-wrapper--step-plan{
+    margin-bottom: 24px;
+}
+
+.form-wrapper--step-addons{
+    margin-bottom: 142px;
 }
 
 .title{
