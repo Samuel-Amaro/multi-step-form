@@ -21,6 +21,10 @@
     margin-bottom: 142px;
 }
 
+.form-wrapper--step-summary{
+    margin-bottom: 161px;
+}
+
 .title{
     color: var(--marine-blue);
     font-weight: 700;

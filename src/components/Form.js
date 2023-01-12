@@ -100,13 +100,13 @@ export default function Form() {
         <TankYou />
       ) : (
         <>
-        {/*TODO: PENSAR NUMA FORMA DE DAR MG-BOTTOM DE VALORES DINAMICOS DE ACORDO COM O STEP RENDERIZADO*/}
+          {/*TODO: PENSAR NUMA FORMA DE DAR MG-BOTTOM DE VALORES DINAMICOS DE ACORDO COM O STEP RENDERIZADO*/}
           {/*<section className="form__content">{steps[currentStepIndex]}</section>*/}
           {steps[currentStepIndex]}
           <div className="form__buttons">
             {currentStepIndex !== 0 && (
               <Button
-                className="form__btn"
+                className="form__btn form__btn--back"
                 goBack={true}
                 type="button"
                 label="Button Go Back Step from Form"
@@ -116,7 +116,11 @@ export default function Form() {
               </Button>
             )}
             <Button
-              className="form__btn"
+              className={
+                currentStepIndex !== steps.length - 1
+                  ? "form__btn form__btn--next"
+                  : "form__btn form__btn--confirm"
+              }
               type="submit"
               next={currentStepIndex !== steps.length - 1 ? true : false}
               confirm={currentStepIndex !== steps.length - 1 ? false : true}

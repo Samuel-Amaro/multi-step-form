@@ -23,3 +23,13 @@
 .button--goback:hover, .button--goback:focus{
     color: var(--marine-blue);
 }
+
+.button--confirm{
+    background-color: var(--purplish-blue);
+    color: var(--alabaster);
+    font-weight: 500;
+}
+
+.button--confirm:hover, .button--confirm:focus{
+    opacity: 0.8;
+}
