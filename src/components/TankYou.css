@@ -1,0 +1,32 @@
+.tank-you{
+    background-color: var(--white);
+    max-width: 345px;
+    margin: -73px auto 196px auto;
+    padding: 79px 15px 78px 15px;
+    border-radius: 5px;
+    box-shadow: 0 1px 28px 1px rgba(0, 0, 0, 0.1);
+}
+
+.tank-you__ilustration{
+    display: block;
+    max-width: 100%;
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 23px auto;
+}
+
+.tank-you__title{
+    font-weight: 700;
+    color: var(--marine-blue);
+    font-size: 1.53rem;
+    text-align: center;
+    margin: 0 0 10px 0;
+}
+
+.tank-you__description{
+    font-weight: 400;
+    color: var(--cool-gray);
+    font-size: 1.05rem;
+    text-align: center;
+    line-height: 1.5;
+}

@@ -1,6 +1,6 @@
 .card-addons{
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     border: 1px solid var(--light-gray);
     padding: 13px 15px 13px 15px;
     align-items: center;

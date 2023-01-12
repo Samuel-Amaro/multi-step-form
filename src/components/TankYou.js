@@ -1,4 +1,5 @@
 import iconTankYou from "../assets/images/icon-thank-you.svg";
+import "./TankYou.css";
 
 export default function TankYou() {
     return (

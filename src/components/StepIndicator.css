@@ -2,7 +2,7 @@
     display: none;
 }
 
-.step-indicator__number{
+.step-indicator__number{    
     display: block;
     background-color: transparent;
     font-size: 0.95rem;
