@@ -21,6 +21,11 @@
 .choose-plan__label {
   font-weight: 500;
   font-size: 0.95rem;
+  color: var(--cool-gray);
+  transition: color 0.4s ease;
+}
+
+.choose-plan__label--active {
   color: var(--marine-blue);
 }
 
@@ -58,4 +63,21 @@
 
 .choose-plan__input:nth-child(2):checked ~ .choose-plan__control {
   right: 3px;
+}
+
+@media screen and (min-width: 780px) {
+  .container-plans {
+    padding: 1px 0 0 0;
+    flex-flow: row nowrap;
+    gap: 18px;
+    margin: 0 0 31px 0;
+  }
+
+  .choose-plan {
+    padding: 14px 0 14px 0;
+  }
+
+  .choose-plan__label {
+    font-size: 0.95rem;
+  }
 }

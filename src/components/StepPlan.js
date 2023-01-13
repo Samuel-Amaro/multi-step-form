@@ -51,7 +51,14 @@ export default function StepPlan(props) {
         })}
       </div>
       <fieldset className="choose-plan">
-        <label className="choose-plan__label" htmlFor="option-monthly">
+        <label
+          className={
+            planTimeSelected === "monthly"
+              ? "choose-plan__label choose-plan__label--active"
+              : "choose-plan__label"
+          }
+          htmlFor="option-monthly"
+        >
           Monthly
         </label>
         <div className="choose-plan__switch">
@@ -133,7 +140,14 @@ export default function StepPlan(props) {
             title="Click here to change your subscription plan option"
           ></span>
         </div>
-        <label className="choose-plan__label" htmlFor="option-Yearly">
+        <label
+          className={
+            planTimeSelected === "yearly"
+              ? "choose-plan__label choose-plan__label--active"
+              : "choose-plan__label"
+          }
+          htmlFor="option-Yearly"
+        >
           Yearly
         </label>
       </fieldset>

@@ -100,8 +100,6 @@ export default function Form() {
         <TankYou />
       ) : (
         <>
-          {/*TODO: PENSAR NUMA FORMA DE DAR MG-BOTTOM DE VALORES DINAMICOS DE ACORDO COM O STEP RENDERIZADO*/}
-          {/*<section className="form__content">{steps[currentStepIndex]}</section>*/}
           {steps[currentStepIndex]}
           <div className="form__buttons">
             {currentStepIndex !== 0 && (

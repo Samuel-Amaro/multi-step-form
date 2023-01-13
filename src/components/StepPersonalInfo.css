@@ -1,5 +1,8 @@
 .form-group__label {
   margin: 0 0 4px 0;
+  font-size: 0.8rem;
+  color: var(--marine-blue);
+  font-weight: 400;
 }
 
 .form-group__input {
@@ -18,8 +21,13 @@
   outline: none;
 }
 
+.form-group__input:invalid,
 .form-group__input:valid {
-  border-color: var(--purplish-blue);
+  border-width: 2px;
+}
+
+.form-group__input:valid {
+  border-color: #8a85c8;
 }
 
 .form-group__input:invalid {
@@ -27,7 +35,7 @@
 }
 
 .form-group__input::placeholder {
-  color: var(--cool-gray);
+  color: #a1a0a4;
   font-weight: 500;
   font-size: 1rem;
 }
@@ -53,4 +61,47 @@
 
 .form-group__wrapper-labels .form-group__label {
   margin: 0;
+}
+
+@media screen and (min-width: 780px) {
+  .form-group:nth-of-type(1) {
+    padding: 1px 0 0 0;
+  }
+
+  .form-group__label {
+    margin: 0 0 7px 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .form-group__wrapper-labels {
+    margin: 0 0 7px 0;
+  }
+
+  .form-group__input {
+    font-size: 1rem;
+    padding: 13px 14px 14px 14px;
+    color: var(--marine-blue);
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  .form-group__input::placeholder {
+    font-size: 1.05rem;
+  }
+
+  .form-group:nth-of-type(-n + 2) {
+    margin: 0 0 23px 0;
+  }
+
+  .form-group__input:invalid,
+  .form-group__input:valid {
+    padding: 13px 14px 13px 14px;
+  }
+
+  .form-group__error {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #c6374b;
+  }
 }

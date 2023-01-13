@@ -4,3 +4,10 @@
     padding: 1px 0 0 0;
     gap: 12px;
 }
+
+@media screen and (min-width: 780px) {
+    .cards-addons{
+        padding: 2px 0 0 0;
+        gap: 15px;
+    }
+}

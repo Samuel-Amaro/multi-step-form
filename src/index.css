@@ -1,30 +1,43 @@
-*, h1, h2, h3, h4, h5, h6{
+*,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
-:root{
+:root {
   --marine-blue: hsl(213, 96%, 18%);
   --purplish-blue: hsl(243, 100%, 62%);
   --pastel-blue: hsl(228, 100%, 84%);
   --light-blue: hsl(206, 94%, 87%);
   --strawberry-red: hsl(354, 84%, 57%);
   --cool-gray: hsl(231, 11%, 63%);
-  --light-gray: hsl(229, 24%, 87%); 
+  --light-gray: hsl(229, 24%, 87%);
   --magnolia: hsl(217, 100%, 97%);
   --alabaster: hsl(231, 100%, 99%);
   --white: hsl(0, 0%, 100%);
-  --active-step-color: #BEE1FD;
-  --border-color-invalid: #B25661;
+  --active-step-color: #bee1fd;
+  --border-color-invalid: #b25661;
 }
 
-html{
+html {
   /*400, 500, 700*/
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
-body{
+body {
   font-size: 16px;
   background-color: var(--magnolia);
+}
+
+@media screen and (min-width: 780px) {
+  .main {
+    min-height: 100vh;
+    padding: 106px 0 105px 0;
+  }
 }

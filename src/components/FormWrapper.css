@@ -1,42 +1,75 @@
-.form-wrapper{
-    background-color: var(--white);
-    /*position: relative;
+.form-wrapper {
+  background-color: var(--white);
+  /*position: relative;
     top: -73px;*/
-    padding: 32px 25px;
-    border-radius: 11px;
-    box-shadow: 0 1px 18px 2px rgba(0, 0, 0, 0.1);
-    max-width: 345px;
-    margin: -73px auto 0 auto;
+  padding: 32px 25px;
+  border-radius: 11px;
+  box-shadow: 3px 1px 18px 2px rgba(0, 0, 0, 0.1);
+  max-width: 345px;
+  margin: -73px auto 0 auto;
 }
 
-.form-wrapper--step-personal{
-    margin-bottom: 121px;
+.form-wrapper--step-personal {
+  margin-bottom: 121px;
 }
 
-.form-wrapper--step-plan{
-    margin-bottom: 24px;
+.form-wrapper--step-plan {
+  margin-bottom: 24px;
 }
 
-.form-wrapper--step-addons{
-    margin-bottom: 142px;
+.form-wrapper--step-addons {
+  margin-bottom: 142px;
 }
 
-.form-wrapper--step-summary{
-    margin-bottom: 161px;
+.form-wrapper--step-summary {
+  margin-bottom: 161px;
 }
 
-.title{
-    color: var(--marine-blue);
-    font-weight: 700;
-    font-size: 1.5rem;
-    margin: 0 0 9px 0;
+.title {
+  color: var(--marine-blue);
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin: 0 0 9px 0;
 }
 
-.description{
-    font-weight: 400;
+.description {
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--cool-gray);
+  line-height: 1.56;
+  margin: 0 0 21px 0;
+}
+
+/*****BREAKPOINT 780px*******/
+@media screen and (min-width: 780px) {
+  .form-wrapper {
+    margin: 0 auto 0 auto;
+    grid-area: b;
+    max-width: 450px;
+    padding: 39px 0 0 0;
+    border-radius: 0px;
+    width: 100%;
+  }
+
+  .title {
+    font-size: 2.03rem;
+    margin: 0 0 8px 0;
+  }
+
+  .description {
     font-size: 1rem;
-    color: var(--cool-gray);
-    line-height: 1.56;
-    margin: 0 0 21px 0;
-}
+    margin: 0 0 36px 0;
+  }
 
+  .form-wrapper--step-personal {
+    margin-bottom: 92px;
+  }
+
+  .form-wrapper--step-plan {
+    margin-bottom: 92px;
+  }
+
+  .form-wrapper--step-addons {
+    margin-bottom: 81px;
+  }
+}

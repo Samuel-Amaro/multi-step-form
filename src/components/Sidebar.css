@@ -13,4 +13,16 @@
   gap: 14px;
 }
 
-
+@media screen and (min-width: 780px) {
+  .sidebar {
+    background-image: url("../assets/images/bg-sidebar-desktop.svg");
+    background-position: center center;
+    flex-flow: column nowrap;
+    padding: 40px 32px 0 32px;
+    height: 100%;
+    justify-content: flex-start;
+    gap: 31.5px;
+    grid-area: a;
+    border-radius: 10px;
+  }
+}
