@@ -15,9 +15,8 @@
 }
 
 .card-addons--selected {
-  border-width: 2px;
-  border-color: #8a85c8;
-  background-color: #f6f9ff;
+  border-color: var(--color02);
+  background-color: var(--color06);
 }
 
 .card-addons__input {
@@ -67,7 +66,7 @@
 .card-addons__price {
   font-weight: 400;
   font-size: 0.8rem;
-  color: #645dba;
+  color: var(--color07);
 }
 
 .card-addons__descriptions {

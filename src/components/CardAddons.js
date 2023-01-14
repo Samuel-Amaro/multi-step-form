@@ -19,17 +19,13 @@ export default function CardAddons({
   const calcPrice = strFormatTimePlan === "mo" ? price : parseInt(price) * 10;
   const [isChecked, setIsChecked] = useState(isCheckedP);
 
-  //apos atualizar state local, atualiza o state do form
   useEffect(() => {
     updateFields({ addOns: [...addonsSelecteds] });
   }, [addonsSelecteds]);
 
-  //apos marcar/desmacar checkbox, atualiza state local
   useEffect(() => {
-    //marcado - checked true
     if (isChecked) {
       setAddonsSelecteds((a) => {
-        //se o addOns não estiver no state
         if (!isAddInState({ name: name, price: calcPrice })) {
           return [
             ...a,
@@ -42,7 +38,6 @@ export default function CardAddons({
         return a;
       });
     } else {
-      //desmarcado
       if (isAddInState({ name: name, price: calcPrice })) {
         const removedAddons = removeAddonsDeselected({
           name: name,
@@ -67,6 +62,7 @@ export default function CardAddons({
   }
 
   function handleOnChange(event) {
+    event.preventDefault();
     setIsChecked(!isChecked);
   }
 

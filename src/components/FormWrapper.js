@@ -7,6 +7,7 @@ export default function FormWrapper(props) {
       "form-wrapper--step-plan": props.plan,
       "form-wrapper--step-addons": props.addOns,
       "form-wrapper--step-summary": props.summary,
+      "form-wrapper--step-plan-yearly": props.planYearly
     });
     return (
       <section className={classes}>

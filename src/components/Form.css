@@ -3,22 +3,7 @@
   width: 100%;
 }
 
-/*.form__content{
-    background-color: var(--white);
-    position: relative;
-    top: -73px;
-    left: 15px;
-    right: 15px;
-    z-index: 999;
-    padding: 32px 25px;
-    border-radius: 11px;
-    box-shadow: 0 1px 18px 2px rgba(0, 0, 0, 0.1);
-    max-width: 345px;
-    margin: 0 auto 49px auto;
-}*/
-
 .form__buttons {
-  /*position: absolute;*/
   bottom: 0;
   z-index: 1000;
   display: flex;
@@ -73,14 +58,21 @@
     border-radius: 6px;
   }
 
+  .form__btn--confirm, .form__btn--next {
+    width: 123px;
+  }
+
   .form__btn--next {
     padding: 14px 0 16px 0;
-    width: 123px;
   }
 
   .form__buttons {
     padding: 0 0 16px 0;
     max-width: 450px;
     margin: 0 auto;
+  }
+
+  .form__btn--confirm {
+    padding: 15px 0 15px 0;
   }
 }

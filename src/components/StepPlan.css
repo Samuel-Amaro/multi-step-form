@@ -37,6 +37,7 @@
   justify-content: space-between;
   padding: 4px 3px;
   width: 38px;
+  height: 20px;
   position: relative;
   border-radius: 15px;
   margin: 0 22px;
@@ -45,11 +46,10 @@
 .choose-plan__control {
   display: block;
   position: absolute;
-  background-color: white;
+  background-color: var(--white);
   transition: all 0.35s ease;
 }
 
-.choose-plan__input,
 .choose-plan__control {
   width: auto;
   width: 12px;
@@ -57,11 +57,11 @@
   border-radius: 50%;
 }
 
-.choose-plan__input:nth-child(1):checked ~ .choose-plan__control {
-  left: 3px;
+.choose-plan__switch:hover, .choose-plan__switch:focus{
+  cursor: pointer;
 }
 
-.choose-plan__input:nth-child(2):checked ~ .choose-plan__control {
+.choose-plan__switch[aria-checked="true"] .choose-plan__control{
   right: 3px;
 }
 

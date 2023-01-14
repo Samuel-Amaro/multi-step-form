@@ -44,22 +44,6 @@ export default function StepSummary(props) {
               >
                 Change
               </Button>
-              {/*<button
-                type="button"
-                className="summary__btn-change"
-                aria-label="Change Plan"
-                title="Change Plan"
-                onPointerDown={(event) => {
-                  props.goTo(1);
-                }}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter") {
-                    props.goTo(1);
-                  }
-                }}
-              >
-                Change
-              </button>*/}
             </div>
             <p className="summary__price-Plan">{`$${props.datas.plan.price}/${timeFormatStr}`}</p>
           </div>

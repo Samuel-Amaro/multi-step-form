@@ -63,12 +63,9 @@ export default function StepPersonalInfo(props) {
   }
 
   useEffect(() => {
-    //campos validados
     if (Object.keys(formErros).length === 0) {
-      //atualiza que foi validado
       props.setIsStepSubmitedValid(true);
     } else {
-      //atualiza que não foi validado
       props.setIsStepSubmitedValid(false);
     }
   }, [formErros]);
@@ -95,7 +92,11 @@ export default function StepPersonalInfo(props) {
           </Label>
         )}
         <Input
-          className="form-group__input"
+          className={
+            formErros.name
+              ? "form-group__input form-group__input--invalid"
+              : "form-group__input"
+          }
           type="text"
           id="name"
           name="name"
@@ -126,7 +127,11 @@ export default function StepPersonalInfo(props) {
           </Label>
         )}
         <Input
-          className="form-group__input"
+          className={
+            formErros.email
+              ? "form-group__input form-group__input--invalid"
+              : "form-group__input"
+          }
           type="text"
           id="email"
           name="email"
@@ -157,7 +162,11 @@ export default function StepPersonalInfo(props) {
           </Label>
         )}
         <Input
-          className="form-group__input"
+          className={
+            formErros.phone
+              ? "form-group__input form-group__input--invalid"
+              : "form-group__input"
+          }
           type="tel"
           id="phone"
           name="phone"

@@ -1,7 +1,5 @@
 .form-wrapper {
   background-color: var(--white);
-  /*position: relative;
-    top: -73px;*/
   padding: 32px 25px;
   border-radius: 11px;
   box-shadow: 3px 1px 18px 2px rgba(0, 0, 0, 0.1);
@@ -15,6 +13,10 @@
 
 .form-wrapper--step-plan {
   margin-bottom: 24px;
+}
+
+.form-wrapper--step-plan-yearly {
+  margin-bottom: 20px;
 }
 
 .form-wrapper--step-addons {
@@ -49,6 +51,7 @@
     padding: 39px 0 0 0;
     border-radius: 0px;
     width: 100%;
+    box-shadow: none;
   }
 
   .title {
@@ -62,14 +65,22 @@
   }
 
   .form-wrapper--step-personal {
-    margin-bottom: 92px;
+    margin-bottom: 99px;
   }
 
   .form-wrapper--step-plan {
-    margin-bottom: 92px;
+    margin-bottom: 117px;
+  }
+
+  .form-wrapper--step-plan-yearly {
+    margin-bottom: 94px;
   }
 
   .form-wrapper--step-addons {
-    margin-bottom: 81px;
+    margin-bottom: 86px;
+  }
+
+  .form-wrapper--step-summary {
+    margin-bottom: 127px;
   }
 }

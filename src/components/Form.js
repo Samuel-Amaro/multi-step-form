@@ -11,8 +11,6 @@ import "./Form.css";
 
 export default function Form() {
 
-  //TODO: PENSAR NUMA FORMA DE ALINHAR BOTÃO NEXT QUANDO SO NA DIREITA
-
   const { datas, setDatas, dataAddons, datasPlanStart } = useData();
   const [isFinish, setIsFinish] = useState(false);
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
@@ -68,20 +66,16 @@ export default function Form() {
 
   function handleSubmitForm(event) {
     event.preventDefault();
-    //se estiver no primeiro passo de inscrição, tem que verficiar se esta valido para proseguir
     if(currentStepIndex === 0) {
-      //e esse passo for valido
       if(isStepSubmitedValid) {
         return nextStep();
       }else{
         return;
       }
     }
-    //enquanto não estiver no ultimo passo, pode proseguir, os passos seguintes não precisam de validação
     if (currentStepIndex !== steps.length - 1) {
       return nextStep();
     }
-    //finaliza form
     setIsFinish(true);
   }
 

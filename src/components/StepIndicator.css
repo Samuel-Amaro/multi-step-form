@@ -40,7 +40,7 @@
 
   .step-indicator__step {
     font-weight: 400;
-    color: #a7a8ff;
+    color: var(--color08);
     text-transform: uppercase;
     font-size: 0.8rem;
     margin: 0 0 3px 0;

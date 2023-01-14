@@ -23,6 +23,13 @@ h6 {
   --white: hsl(0, 0%, 100%);
   --active-step-color: #bee1fd;
   --border-color-invalid: #b25661;
+  --color01: #f8f9fe;
+  --color02: #8a85c8;
+  --color03: #a1a0a4;
+  --color04: #c6374b;
+  --color06: #f6f9ff;
+  --color07: #645dba;
+  --color08: #a7a8ff;
 }
 
 html {

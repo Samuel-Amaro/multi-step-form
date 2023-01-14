@@ -19,9 +19,9 @@
 }
 
 .card-plan--selected {
-  border-color: #8a85c8;
+  border-color: var(--color02);
   border-width: 2px;
-  background-color: #f6f9ff;
+  background-color: var(--color06);
 }
 
 .card-plan__icon-ilustration {
