@@ -8,9 +8,8 @@ export default function StepPersonalInfo(props) {
   const emailRegexExp =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   const phoneRegexpExp =
-    /[0-9]{1}[\s]{1}[0-9]{3}[\s]{1}[0-9]{3}[\s]{1}[0-9]{3}/;
-  const phoneRegexExpAttribute =
-    `[0-9]{1}[\\s]{1}[0-9]{3}[\\s]{1}[0-9]{3}[\\s]{1}[0-9]{3}`;
+    /\d{10,15}/; /*/[0-9]{1}[\s]{1}[0-9]{3}[\s]{1}[0-9]{3}[\s]{1}[0-9]{3}/*/
+  const phoneRegexExpAttribute = `\\d{1,15}`; /*`[0-9]{1}[\\s]{1}[0-9]{3}[\\s]{1}[0-9]{3}[\\s]{1}[0-9]{3}`*/
   const initialValues = {
     name: props.datas.name,
     email: props.datas.email,
@@ -48,18 +47,14 @@ export default function StepPersonalInfo(props) {
     for (const key in props.datas) {
       if (fields.includes(key)) {
         Object.defineProperty(fieldsValues, key, {
-          enumerable: true, 
-          configurable: true, 
+          enumerable: true,
+          configurable: true,
           writable: true,
           value: props.datas[key],
         });
       }
     }
-    setFormErros(
-      validate(
-        fieldsValues
-      )
-    );
+    setFormErros(validate(fieldsValues));
   }
 
   useEffect(() => {
@@ -132,7 +127,7 @@ export default function StepPersonalInfo(props) {
               ? "form-group__input form-group__input--invalid"
               : "form-group__input"
           }
-          type="text"
+          type="email"
           id="email"
           name="email"
           placeholder="e.g. stephenking@lorem.com"
@@ -174,9 +169,10 @@ export default function StepPersonalInfo(props) {
           value={initialValues.phone}
           onHandle={handleInputChange}
           required={true}
-          min="13"
+          min="10"
+          max="15"
           pattern={phoneRegexExpAttribute}
-          title="Please enter with number phone with format e.g. +1 234 567 890"
+          title="Please type with formatted phone number, for example +1 234 567 890 without white spaces, only numbers. with min 10 numbers and max 15 numbers"
           checked={undefined}
           onKeyDown={undefined}
         />
